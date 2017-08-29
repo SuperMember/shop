@@ -1,0 +1,4 @@
+jdbc.username=root
+jdbc.password=admin@123
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://119.29.228.106:3306/goods?characterEncoding=utf-8

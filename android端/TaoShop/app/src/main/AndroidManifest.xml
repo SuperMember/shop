@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lenovo.taoshop">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppBaseTheme">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".mvp.base.BaseActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".LogisticsActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/Translucent.Search" />
+        <activity android:name=".GoodDetailActivity" />
+        <activity
+            android:name=".CommentsActivity"
+            android:theme="@style/CommentTheme"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".AddressActivity" />
+        <activity android:name=".EditAddrActivity" />
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".OrderDefActivity" />
+        <activity android:name=".LogisticsSelectActivity" />
+        <activity android:name=".OrderCommentActivity" />
+        <activity android:name=".MinaActivity"></activity>
+        <activity
+            android:name=".PhotoShowActivity"
+            android:theme="@style/SplashTheme" />
+
+        <service android:name=".service.MinaService">
+            <intent-filter>
+                <action android:name="com.mina.service" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".MessageActivity"></activity>
+        <activity android:name=".HomeItemDetailActivity"></activity>
+    </application>
+
+</manifest>

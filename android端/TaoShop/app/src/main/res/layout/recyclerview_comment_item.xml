@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:background="#ffffff"
+    android:gravity="center">
+
+    <com.hankkin.library.CircleImageView
+        android:id="@+id/user_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:src="@mipmap/user"
+        app:civ_border_color="#f1e5ec"
+        app:civ_border_width="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/user_img"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/standard_x_small_margin"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="昵称"
+                        android:textColor="@color/blue" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:id="@+id/img_praise"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/img_praise_bg" />
+                        <TextView
+                            android:id="@+id/text_praise_num"
+                            style="@style/small_tv_style"
+                            android:layout_gravity="center_vertical"
+                            android:text="0" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    style="@style/small_tv_style"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lv_comment"
+                    android:layout_toRightOf="@+id/user_img"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="时间" />
+
+                <TextView
+                    android:id="@+id/tv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relativelayout_info"
+                    android:layout_marginTop="@dimen/standard_s_small_margin"
+                    android:layout_toRightOf="@+id/user_img"
+                    android:text="内容"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <com.example.lenovo.taoshop.widget.CommentListView
+            android:id="@+id/lv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativelayout_info"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="@dimen/standard_x_small_margin"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/user_img"
+            android:background="#e9e4e4" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

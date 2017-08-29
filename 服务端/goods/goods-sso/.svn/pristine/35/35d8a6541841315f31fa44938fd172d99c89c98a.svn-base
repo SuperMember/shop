@@ -1,0 +1,200 @@
+package com.goods.sso.service.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
+
+import com.goods.manager.mapper.TbAddrMapper;
+import com.goods.manager.mapper.TbUserMapper;
+import com.goods.manager.pojo.Muser;
+import com.goods.manager.pojo.TbAddr;
+import com.goods.manager.pojo.TbUser;
+import com.goods.manager.pojo.TbUserExample;
+import com.goods.manager.pojo.TbUserExample.Criteria;
+import com.goods.sso.dao.JedisClient;
+import com.goods.sso.mapper.UserMapper;
+import com.goods.sso.pojo.UserEntity;
+import com.goods.sso.service.UserService;
+import com.goods.tools.common.util.CookieUtils;
+import com.goods.tools.common.util.ExceptionUtil;
+import com.goods.tools.common.util.JsonUtils;
+import com.goods.tools.common.util.TaotaoResult;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Value("${REDIS_USER_SESSION_KEY}")
+	private String REDIS_USER_SESSION_KEY;// redis�е�key
+	@Value("${SSO_SESSION_EXPIRE}")
+	private String SSO_SESSION_EXPIRE;// redis��key�Ĺ���ʱ��
+	// ����type��ͬ��¼��ͬ���û�
+	@Autowired
+	private TbUserMapper tbUserMapper;
+	@Autowired
+	private JedisClient jedisClient;// ����
+
+	@Autowired
+	private UserMapper userMapper;
+	@Autowired
+	private TbAddrMapper tbAddrMapper;
+
+	public TaotaoResult login(String username, String password, HttpServletRequest request,
+			HttpServletResponse response, Integer index) {
+		try {
+			/*
+			 * TbUserExample tbUserExample = new TbUserExample(); Criteria
+			 * criteria = tbUserExample.createCriteria();
+			 * criteria.andUsernameEqualTo(username); List<TbUser> list =
+			 * tbUserMapper.selectByExample(tbUserExample);
+			 */
+
+			/*
+			 * if (list == null || list.size() == 0) return
+			 * TaotaoResult.build(400, "�û�������"); TbUser user = list.get(0);
+			 * if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.
+			 * getPassword())) { // ������� return TaotaoResult.build(400,
+			 * "�������"); }
+			 */
+			UserEntity user = userMapper.getLogin(username);
+			if (user == null) {
+				return TaotaoResult.build(400, "用户不存在");
+			}
+
+			if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
+				// �������
+				return TaotaoResult.build(400, "密码错误");
+			}
+
+			// ����redis��
+			// ����token
+			String token = UUID.randomUUID().toString();
+			// �����û�֮ǰ�����û������е�������ա�
+			// ֻ����һЩ�����ص���Ϣ
+			user.setPassword(null);
+			// ���û���Ϣд��redis
+			String userJson = JsonUtils.objectToJson(user);
+
+			jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, userJson);
+			// ����session�Ĺ���ʱ��
+			jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, Integer.parseInt(SSO_SESSION_EXPIRE));
+
+			// ���дcookie���߼���cookie����Ч���ǹر��������ʧЧ��
+			// ��ҳ����Ҫ����cookies��,��������Ҫ����cookies��
+			// ֻ�����ҽ��е�¼ʱ����Ҫ����cookies��
+			// CookieUtils.setCookie(request, response, "TT_TOKEN", token);
+
+			// �ƶ��˲���Ҫ
+			// ����token
+			if (index != null) {
+				// ��ҵ�¼
+				// ֱ�ӷ�����Ϣ
+				// �����ʱ��ַ
+
+				return TaotaoResult.ok(userJson);
+			}
+			return TaotaoResult.ok(token);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+
+	}
+
+	// ע��
+	public TaotaoResult register(TbUser tbUser) {
+		try {
+			// ��ȫ
+			tbUser.setCreated(new Date());
+			tbUser.setUpdated(new Date());
+			tbUser.setSeller(0);// ��ʼ��Ϊ���
+			// ��������м���
+			tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
+			tbUserMapper.insert(tbUser);
+			return TaotaoResult.ok();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(400, "ע��ʧ��");
+		}
+	}
+
+	// �������ֶ��Ƿ����
+	// type������������ֶ�
+	public TaotaoResult checkDatas(String datas, int type) {
+		TbUserExample tbUserExample = new TbUserExample();
+		Criteria criteria = tbUserExample.createCriteria();
+		if (type == 1) {
+			// �û���
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0)
+				return TaotaoResult.ok("�û�������");
+			return TaotaoResult.build(400, "�û����ѱ�ע��");
+		} else if (type == 2) {
+			// ����
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0)
+				return TaotaoResult.ok("�������");
+			return TaotaoResult.build(400, "�����ѱ�ռ��");
+		} else if (type == 3) {
+			// �ֻ�
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0) {
+				// ������֤��
+				// ����֤�뷵�ؿͻ���
+				String code = null;
+				return TaotaoResult.ok(code);
+			}
+			return TaotaoResult.build(400, "�ֻ��ѱ�ռ��");
+		} else {
+			return TaotaoResult.build(400, "�ֶ���������Χ");
+		}
+
+	}
+
+	// 编辑
+	public TaotaoResult editAddr(TbAddr tbAddr) {
+		try {
+			tbAddrMapper.updateByPrimaryKey(tbAddr);
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "编辑失败，请稍后再试");
+	}
+
+	// 删除
+	public TaotaoResult deleteAddr(Long id) {
+		try {
+			tbAddrMapper.deleteByPrimaryKey(id);
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "删除失败，请稍后重试");
+	}
+
+	// 新增
+	public TaotaoResult addAddr(TbAddr tbAddr) {
+		try {
+			tbAddrMapper.insert(tbAddr);
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "新增失败，请稍后重试");
+	}
+
+}

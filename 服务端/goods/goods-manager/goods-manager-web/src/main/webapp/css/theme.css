@@ -1,0 +1,122 @@
+/*数据录入和修改样式*/
+.pn-ftable{background-color:#B4CFCF;margin-top:5px;}
+.pn-flabel{background-color:#e6f2fe;text-align:right;padding-right:3px; color:#000;}
+.pn-flabel-h{height:27px;}
+.pn-fcontent{background-color:#FFFFFF;padding-left:5px;}
+.pn-fbutton{background-color:#FFFFFF;text-align:center;}
+.pn-fhelp{color:#747474;padding:3px 0px;}
+.pn-frequired{color:red}
+.pn-fruler{background:url(../images/theme/ruler.gif) repeat-x 1px 6px;}
+/*数据列表样式*/
+.pn-ltable{background-color:#C8DCF0;margin:5px auto 0px auto;}
+.pn-lthead{}
+.pn-lthead th{height:29px;background-image:url(../images/theme/tit-tdbg.png); color:#3566a9;}
+.pn-ltbody{background-color:#FFFFFF;}
+.pn-ltbody .intd{text-indent:5px;}
+.pn-ltbody tr{height:25px;}
+
+/*数据列表鼠标经过样式*/
+.pn-lhover{background-color:#F2F2F2;}
+.pn-lselected{background-color:#d9e8fb;}
+/*数据列表没有数据样式*/
+.pn-lnoresult{padding:10px;border:#b4cfcf 1px solid;text-align:center;color:red;font-weight:bold;}
+/*数据列表批量操作样式*/
+.pn-lbopt{margin-top:2px;padding:5px;border:#b4cfcf 1px solid;}
+/*数据列表操作链接样式*/
+.pn-lopt{text-align:center;}
+a.pn-opt{text-decoration:underline;}
+a.pn-opt:link {color: #2366A8;}
+a.pn-opt:visited {color: #2366A8;}
+a.pn-opt:hover{color: #2366A8;}
+a.pn-opt:active {color: #2366A8;}
+/*分页样式*/
+.pn-sp{margin-top:3px;padding:1px 0;height:28px;background-image:url(../images/theme/pbg.jpg);}
+/*树的样式*/
+.pn-tree{font-size:12px;}
+.pn-tree *{word-break:keep-all;white-space:nowrap;}
+.pn-tree img{vertical-align:middle;}
+.pn-tree-hover{background-color:#F5F5F5;}
+.pn-tree-selected{background-color:#DDECEF;}
+.pn-tree-checkbox{vertical-align:middle;}
+
+/*按钮的样式*/
+.del-button{background:url(../images/theme/del-button.png) no-repeat; width:59px; height:24px; text-indent:18px; color:#676666; border:0 none; cursor:pointer;}
+.save-order{background:url(../images/theme/save-button.png) no-repeat; width:106px; height:24px; border:0 none;text-indent:18px; color:#676666; cursor:pointer;}
+.save-field{background:url(../images/theme/save-button.png) no-repeat; width:125px; height:24px; border:0 none;text-indent:20px; color:#676666; cursor:pointer;}
+.save-content{background:url(../images/theme/save-button.png) no-repeat; width:106px; height:24px; border:0 none;text-indent:20px; color:#676666; cursor:pointer;}
+.return-button{background:url(../images/theme/theme-button.png) no-repeat -71px 0px; width:81px; height:24px; color:#646665; text-indent:18px; line-height:24px; border:0 none; cursor:pointer;}
+.preview-button{background: url(../images/theme/theme-button.png) no-repeat 0px -68px; width:59px; height:24px; border:0 none; cursor:pointer; color:#005bd5; text-indent:18px; margin-bottom:5px; cursor:pointer;}
+.upload-button{background: url(../images/theme/theme-button.png) no-repeat 0px -35px; width:59px; height:24px; border:0 none; cursor:pointer; color:#005bd5; text-indent:18px;  margin-bottom:5px; cursor:pointer;}
+.cut-button{background: url(../images/theme/theme-button.png) no-repeat 0px -35px; width:59px; height:24px; border:0 none; cursor:pointer; color:#005bd5; text-indent:18px; cursor:pointer;}
+.submit{background: url(../images/theme/theme-button.png) no-repeat -71px -35px; width:59px; height:24px; border:0 none; cursor:pointer; color:#666665; text-indent:18px; cursor:pointer;}
+.reset{background: url(../images/theme/theme-button.png) no-repeat -141px -35px; width:59px; height:24px; border:0 none; cursor:pointer; color:#666665; text-indent:18px; cursor:pointer;}
+.generate-static{ background:url(../images/theme/button.png) no-repeat -10px -9px; width:92px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.create-template{background:url(../images/theme/button.png) no-repeat -11px -43px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.create-file{background:url(../images/theme/button.png) no-repeat -11px -43px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.upload-file{background:url(../images/theme/button.png) no-repeat -113px -43px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.query{background:url(../images/theme/button.png) no-repeat -11px -77px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.front-view{background:url(../images/theme/button.png) no-repeat -113px -77px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.add{background:url(../images/theme/button.png) no-repeat -11px -111px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.create-new{background:url(../images/theme/button.png) no-repeat -114px -111px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.check{background:url(../images/theme/button.png) no-repeat -12px -145px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.edit{background:url(../images/theme/button.png) no-repeat -115px -145px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.reject{background:url(../images/theme/button.png) no-repeat -12px -179px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.pre-page{background:url(../images/theme/button.png) no-repeat -115px -179px; width:69px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.next-page{text-align:left;background:url(../images/theme/button.png) no-repeat -12px -213px; width:69px; height:24px; color:#666666; line-height:24px; border:0 none; cursor:pointer;}
+.last-page{text-align:left;background:url(../images/theme/button.png) no-repeat -115px -212px; width:69px; height:24px; color:#666666; line-height:24px;padding:0px;border:0 none; cursor:pointer;}
+.first-page{background:url(../images/theme/button.png) no-repeat -12px -247px; width:69px; height:24px; color:#666666; line-height:24px; text-indent:15px; border:0 none; cursor:pointer;}
+.go{background:url(../images/theme/button.png) no-repeat -115px -247px; width:49px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.cancel{background:url(../images/theme/button.png) no-repeat -125px -282px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.vice-channel{background:url(../images/theme/button.png) no-repeat -12px -314px; width:69px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.add-picture{background:url(../images/theme/button.png) no-repeat -87px -314px; width:106px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.setting{background:url(../images/theme/button.png) no-repeat -12px -347px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.export{background:url(../images/theme/button.png) no-repeat -76px -347px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.import{background:url(../images/theme/button.png) no-repeat -140px -347px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.save-default{background:url(../images/theme/button.png) no-repeat -10px -379px; width:132px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.recycle{background:url(../images/theme/button.png) no-repeat -12px -411px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.generate-index{background:url(../images/theme/button.png) no-repeat -83px -411px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.base-setting{background:url(../images/theme/button.png) no-repeat -10px -441px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.initialize{background:url(../images/theme/button.png) no-repeat -100px -441px; width:69px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.generate-index-page{background:url(../images/theme/button.png) no-repeat -10px -472px; width:107px; height:24px; color:#666666; line-height:24px; text-indent:22px; border:0 none; cursor:pointer;}
+.sys-setting{background:url(../images/theme/button.png) no-repeat -10px -501px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.login-setting{background:url(../images/theme/button.png) no-repeat -100px -501px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.mark-setting{background:url(../images/theme/button.png) no-repeat -10px -531px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.member-setting{background:url(../images/theme/button.png) no-repeat -100px -531px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.generate-channel-page{background:url(../images/theme/button.png) no-repeat -10px -560px; width:120px; height:24px; color:#666666; line-height:24px; text-indent:20px; border:0 none; cursor:pointer;}
+.start-acqu{background:url(../images/theme/button.png) no-repeat -12px -591px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.channel-right{background:url(../images/theme/button.png) no-repeat -103px -591px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.del-index-page{background:url(../images/theme/button.png) no-repeat -10px -621px; width:107px; height:24px; color:#666666; line-height:24px; text-indent:22px; border:0 none; cursor:pointer;}
+.generate-content-page{background:url(../images/theme/button.png) no-repeat -10px -560px; width:120px; height:24px; color:#666666; line-height:24px; text-indent:20px; border:0 none; cursor:pointer;}
+.browse{background:url(../images/theme/button.png) no-repeat -127px -621px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.file-button{height:24px;opacity:0;filter:alpha(opacity=0);position:absolute;right:5px;top:-5px; *left:0; *top:5px;}
+.file-button-other{height:24px;opacity:0;filter:alpha(opacity=0);position:absolute;right:78px;top:0px;}
+.send-message{background:url(../images/theme/button.png) no-repeat -10px -655px; width:95px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.forward{background:url(../images/theme/button.png) no-repeat -115px -655px; width:66px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.inbox{background:url(../images/theme/button.png) no-repeat -10px -683px; width:95px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.sendbox{background:url(../images/theme/button.png) no-repeat -10px -712px; width:95px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.trash{background:url(../images/theme/button.png) no-repeat -10px -740px; width:95px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.reply{background:url(../images/theme/button.png) no-repeat -116px -683px; width:66px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.delete-complete{background:url(../images/theme/button.png) no-repeat -116px -712px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+
+.editor-style{background:url(../images/theme/eidtorbg.jpg) repeat-x;height:38px;line-height:38px;}
+.editor-bbg{background:url(../images/theme/tb-bg.jpg) no-repeat; width:464px;height:38px;}
+
+.push/*推送*/{background:url(../images/theme/button.png) no-repeat -115px -740px; width:66px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.cancellation-audit/*取消审核*/{background:url(../images/theme/button.png) no-repeat -10px -768px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.firewall-setting/*网站防火墙*/{background:url(../images/theme/button.png) no-repeat -101px -768px; width:94px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.delete-sharing/*删除共享*/{background:url(../images/theme/button.png) no-repeat -10px -796px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.remove-member/*移除成员*/{background:url(../images/theme/button.png) no-repeat -101px -796px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.delete-all-failure-attachment/*删除所有失效附件*/{background:url(../images/theme/button.png) no-repeat -10px -824px; width:128px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.backup/*备份*/{background:url(../images/theme/button.png) no-repeat -10px -852px; width:60px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.recovery/*恢复*/{background:url(../images/theme/button.png) no-repeat -74px -852px; width:60px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.download/*下载*/{background:url(../images/theme/button.png) no-repeat -138px -852px; width:60px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+.select-file/*选择文件*/{background:url(../images/theme/button.png) no-repeat -10px -880px; width:81px; height:24px; color:#666666; line-height:24px; text-indent:18px; border:0 none; cursor:pointer;}
+/*内容移动操作*/
+.content_move{ background-image: url(../images/theme/content_move.png); width:59px; height:24px; line-height:24px; text-indent:25px; border:0;}
+.add_item{ background-image: url(../images/theme/add_item.png); width:96px; height:24px; line-height:24px; text-indent:26px;border:0;}
+.add_subTopic{ background-image: url(../images/theme/add_subTopic.png); width:106px; height:24px; line-height:24px; text-indent:26px;border:0;}
+.up{ background-image: url(../images/theme/up.png); width:60px; height:24px; line-height:24px; text-indent:24px; border:0;}
+.up_disabled{ background-image: url(../images/theme/up_disabled.png); width:60px; height:24px; line-height:24px; text-indent:24px; border:0;}
+.down{ background-image: url(../images/theme/down.png); width:60px; height:24px; line-height:24px; text-indent:24px; border:0;}
+.down_disabled{ background-image: url(../images/theme/down_disabled.png); width:60px; height:24px; line-height:24px; text-indent:24px; border:0;}
+.add_folder{background:url(../images/theme/button.png) no-repeat -11px -111px; width:59px; height:24px; color:#666666; line-height:24px; text-indent:8px; border:0 none; cursor:pointer;}

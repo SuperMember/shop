@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.manager.mapper.TbCommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.goods.manager.pojo.TbCommentsResult" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="muser_id" property="muserId" jdbcType="BIGINT" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="degree" property="degree" jdbcType="VARCHAR" />
+    <result column="buyername" property="buyername" jdbcType="VARCHAR" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodprice" property="goodprice" jdbcType="DECIMAL" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="itemId" property="itemid" jdbcType="BIGINT" />
+    <result column="soldid" property="soldid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, muser_id, comments, time, degree, buyername, goodname, goodprice, created, updated, 
+    pic, itemId, soldid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.goods.manager.pojo.TbCommentsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_comments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_comments
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.goods.manager.pojo.TbCommentsExample" >
+    delete from tb_comments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.goods.manager.pojo.TbComments" >
+    insert into tb_comments (id, muser_id, comments, 
+      time, degree, buyername, 
+      goodname, goodprice, created, 
+      updated, pic, itemId, 
+      soldid)
+    values (#{id,jdbcType=BIGINT}, #{muserId,jdbcType=BIGINT}, #{comments,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{degree,jdbcType=VARCHAR}, #{buyername,jdbcType=VARCHAR}, 
+      #{goodname,jdbcType=VARCHAR}, #{goodprice,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{pic,jdbcType=VARCHAR}, #{itemid,jdbcType=BIGINT}, 
+      #{soldid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goods.manager.pojo.TbComments" >
+    insert into tb_comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="muserId != null" >
+        muser_id,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="buyername != null" >
+        buyername,
+      </if>
+      <if test="goodname != null" >
+        goodname,
+      </if>
+      <if test="goodprice != null" >
+        goodprice,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="itemid != null" >
+        itemId,
+      </if>
+      <if test="soldid != null" >
+        soldid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="muserId != null" >
+        #{muserId,jdbcType=BIGINT},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="buyername != null" >
+        #{buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="goodname != null" >
+        #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        #{goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemid != null" >
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="soldid != null" >
+        #{soldid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.goods.manager.pojo.TbCommentsExample" resultType="java.lang.Integer" >
+    select count(*) from tb_comments
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_comments
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.muserId != null" >
+        muser_id = #{record.muserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.comments != null" >
+        comments = #{record.comments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.degree != null" >
+        degree = #{record.degree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyername != null" >
+        buyername = #{record.buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodname != null" >
+        goodname = #{record.goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodprice != null" >
+        goodprice = #{record.goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pic != null" >
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemid != null" >
+        itemId = #{record.itemid,jdbcType=BIGINT},
+      </if>
+      <if test="record.soldid != null" >
+        soldid = #{record.soldid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_comments
+    set id = #{record.id,jdbcType=BIGINT},
+      muser_id = #{record.muserId,jdbcType=BIGINT},
+      comments = #{record.comments,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=TIMESTAMP},
+      degree = #{record.degree,jdbcType=VARCHAR},
+      buyername = #{record.buyername,jdbcType=VARCHAR},
+      goodname = #{record.goodname,jdbcType=VARCHAR},
+      goodprice = #{record.goodprice,jdbcType=DECIMAL},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      itemId = #{record.itemid,jdbcType=BIGINT},
+      soldid = #{record.soldid,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goods.manager.pojo.TbComments" >
+    update tb_comments
+    <set >
+      <if test="muserId != null" >
+        muser_id = #{muserId,jdbcType=BIGINT},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="buyername != null" >
+        buyername = #{buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="goodname != null" >
+        goodname = #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        goodprice = #{goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemid != null" >
+        itemId = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="soldid != null" >
+        soldid = #{soldid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goods.manager.pojo.TbComments" >
+    update tb_comments
+    set muser_id = #{muserId,jdbcType=BIGINT},
+      comments = #{comments,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      degree = #{degree,jdbcType=VARCHAR},
+      buyername = #{buyername,jdbcType=VARCHAR},
+      goodname = #{goodname,jdbcType=VARCHAR},
+      goodprice = #{goodprice,jdbcType=DECIMAL},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      pic = #{pic,jdbcType=VARCHAR},
+      itemId = #{itemid,jdbcType=BIGINT},
+      soldid = #{soldid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

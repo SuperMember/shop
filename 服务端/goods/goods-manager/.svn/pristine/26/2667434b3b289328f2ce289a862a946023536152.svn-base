@@ -1,0 +1,126 @@
+package com.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.util.StringUtils;
+
+import com.goods.manager.mapper.TbItemDescMapper;
+import com.goods.manager.mapper.TbItemMapper;
+import com.goods.manager.pojo.TbItem;
+import com.goods.manager.pojo.TbItemDesc;
+import com.goods.tools.common.util.HttpClientUtil;
+import com.goods.tools.common.util.IDUtils;
+
+public class addGoods {
+	private TbItemMapper tbItemMapper;
+	private TbItemDescMapper tbItemDescMapper;
+
+	@Test
+	public void add() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+				"classpath:spring/applicationContext-Dao.xml");
+		tbItemDescMapper = (TbItemDescMapper) applicationContext.getBean("tbItemDescMapper");
+		tbItemMapper = (TbItemMapper) applicationContext.getBean("tbItemMapper");
+		for (int i = 1; i <= 1; i++) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("keyword", "电风扇");
+			map.put("enc", "utf-8");
+			map.put("page", i + "");
+			String result = HttpClientUtil.doGet("https://search.jd.com/Search", map);
+			if (result != null) {
+				Document document = Jsoup.parse(result);
+				Elements elements = document.select("ul li.gl-item");
+				for (int j = 0; j < elements.size(); j++) {
+					StringBuilder imageurl = new StringBuilder();
+					Element element = elements.get(j);
+					TbItem tEntity = new TbItem();
+					Document lis = Jsoup.parse(element.html());
+					String title = lis.select("div.p-img a").attr("title");// 商品标题
+					tEntity.setTitle(title);
+					String price = lis.select("div.p-price strong").attr("data-price");
+					// 商品价格
+					String goodsprice;
+					if (price != null && !price.equals("")) {
+						goodsprice = price.substring(0, price.lastIndexOf("."));
+					} else {
+						continue;
+					}
+					// 处理价格
+					tEntity.setId(IDUtils.genItemId());
+					tEntity.setPrice(Long.parseLong(goodsprice));
+					tEntity.setSellPoint(title);
+					tEntity.setNum(100);
+					tEntity.setStatus((byte) 1);
+					tEntity.setCreated(new Date());
+					tEntity.setUpdated(new Date());
+					// 设置类别
+					tEntity.setCid((long) 90);
+					// 设置
+					tEntity.setMuserId((long) 1);
+
+					String url = "https:" + lis.select("div.p-img a").attr("href");
+
+					Process p;
+					try {
+						Runtime rt = Runtime.getRuntime();
+						String exec = "E:/web/phantomjs.exe E:/web/code.js " + url;
+						p = rt.exec(exec);
+						InputStream is = p.getInputStream();
+						Document details = Jsoup.parse(is, "UTF-8", url);
+						// 商品描述
+						TbItemDesc tbItemDesc = new TbItemDesc();
+						Element table = details.select("div.detail-content-wrap").first();
+						tbItemDesc.setItemId(tEntity.getId());
+						tbItemDesc.setItemDesc(table.html());
+						tbItemDesc.setCreated(new Date());
+						tbItemDesc.setUpdated(new Date());
+						// 插入商品描述
+						tbItemDescMapper.insert(tbItemDesc);
+
+						// 详情页
+
+						Elements pic = details.select("div#spec-list ul li");
+						for (int c = 0; c < pic.size(); c++) {
+							Element li = pic.get(c);
+							Document images = Jsoup.parse(li.html());
+							Elements img = images.select("img");
+							String string = "https:" + img.attr("src");
+							// 处理图片
+							String newstring = null;
+							if (string.contains("s54x54_g5")) {
+
+								newstring = string.replace("s54x54_g5", "s400x400_g5");
+							} else if (string.contains("s54x54_jfs")) {
+								newstring = string.replace("s54x54_jfs", "s400x400_jfs");
+							} else if (string.contains("/n5/")) {
+								newstring = string.replace("/n5/", "/n1/");
+							}
+							imageurl.append(newstring + ",");
+						}
+						tEntity.setImage(new String(imageurl));// 设置商品图片
+						// 插入商品
+						tbItemMapper.insert(tEntity);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+	}
+}

@@ -1,0 +1,136 @@
+package com.goods.sso.service.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
+
+import com.goods.manager.mapper.TbUserMapper;
+import com.goods.manager.pojo.Muser;
+import com.goods.manager.pojo.TbUser;
+import com.goods.manager.pojo.TbUserExample;
+import com.goods.manager.pojo.TbUserExample.Criteria;
+import com.goods.sso.dao.JedisClient;
+import com.goods.sso.service.UserService;
+import com.goods.tools.common.util.CookieUtils;
+import com.goods.tools.common.util.ExceptionUtil;
+import com.goods.tools.common.util.JsonUtils;
+import com.goods.tools.common.util.TaotaoResult;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Value("${REDIS_USER_SESSION_KEY}")
+	private String REDIS_USER_SESSION_KEY;// redis中的key
+	@Value("${SSO_SESSION_EXPIRE}")
+	private String SSO_SESSION_EXPIRE;// redis中key的过期时间
+	// 根据type不同登录不同的用户
+	@Autowired
+	private TbUserMapper tbUserMapper;
+	@Autowired
+	private JedisClient jedisClient;// 缓存
+
+	public TaotaoResult login(String username, String password, HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			TbUserExample tbUserExample = new TbUserExample();
+			Criteria criteria = tbUserExample.createCriteria();
+			criteria.andUsernameEqualTo(username);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0)
+				return TaotaoResult.build(400, "用户不存在");
+			TbUser user = list.get(0);
+			if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
+				// 密码错误
+				return TaotaoResult.build(400, "密码错误");
+			}
+			// 加入redis中
+			// 生成token
+			String token = UUID.randomUUID().toString();
+			// 保存用户之前，把用户对象中的密码清空。
+			// 只返回一些不隐秘的信息
+			user.setPassword(null);
+			// 把用户信息写入redis
+			jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
+			// 设置session的过期时间
+			jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, Integer.parseInt(SSO_SESSION_EXPIRE));
+
+			// 添加写cookie的逻辑，cookie的有效期是关闭浏览器就失效。
+			// 网页版需要加入cookies中,即卖家需要加入cookies中
+			//只有卖家进行登录时才需要加入cookies中
+			//CookieUtils.setCookie(request, response, "TT_TOKEN", token);
+
+			// 移动端不需要
+			// 返回token
+			return TaotaoResult.ok(token);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+
+	}
+
+	// 注册
+	public TaotaoResult register(TbUser tbUser) {
+		try {
+			// 补全
+			tbUser.setCreated(new Date());
+			tbUser.setUpdated(new Date());
+			// 对密码进行加密
+			tbUser.setPassword(DigestUtils.md5DigestAsHex(tbUser.getPassword().getBytes()));
+			tbUserMapper.insert(tbUser);
+			return TaotaoResult.ok();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(400, "注册失败");
+		}
+	}
+
+	// 检测各个字段是否可用
+	// type用于区别各个字段
+	public TaotaoResult checkDatas(String datas, int type) {
+		TbUserExample tbUserExample = new TbUserExample();
+		Criteria criteria = tbUserExample.createCriteria();
+		if (type == 1) {
+			// 用户名
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0)
+				return TaotaoResult.ok("用户名可用");
+			return TaotaoResult.build(400, "用户名已被注册");
+		} else if (type == 2) {
+			// 邮箱
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0)
+				return TaotaoResult.ok("邮箱可用");
+			return TaotaoResult.build(400, "邮箱已被占用");
+		} else if (type == 3) {
+			// 手机
+			criteria.andUsernameEqualTo(datas);
+			List<TbUser> list = tbUserMapper.selectByExample(tbUserExample);
+			if (list == null || list.size() == 0) {
+				// 发送验证码
+				// 将验证码返回客户端
+				String code = null;
+				return TaotaoResult.ok(code);
+			}
+			return TaotaoResult.build(400, "手机已被占用");
+		} else {
+			return TaotaoResult.build(400, "字段数超出范围");
+		}
+
+	}
+
+
+}

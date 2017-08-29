@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syncparticipants>
+<participant displayName="SVN (/goods-comments, /goods-logistics, /goods-manager, /goods-order, /goods-parent, /goods-rest, /goods-search, /goods-sso, /goods-tools-common, /goods-websocket)" id="org.tigris.subversion.subclipse.participant" secondary_id="1494652453874">
+<data root="false">
+<org.eclipse.team.ui.TEAMSUBSRCIBERSETTINGS org.eclipse.team.ui.SCOPE_TYPE="ResourceScope">
+<org.eclipse.team.ui.TEAMSUBSRCIBER_REFRESHSCHEDULE org.eclipse.team.ui.CTX_REFRESHSCHEDULE_ENABLED="false" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_INTERVAL="3600" org.eclipse.team.ui.CTX_REFRESHSCHEDULE_RUNONCE="false"/>
+<resource_scope_roots resource_scope_root_resource="/goods-comments"/>
+<resource_scope_roots resource_scope_root_resource="/goods-logistics"/>
+<resource_scope_roots resource_scope_root_resource="/goods-manager"/>
+<resource_scope_roots resource_scope_root_resource="/goods-order"/>
+<resource_scope_roots resource_scope_root_resource="/goods-parent"/>
+<resource_scope_roots resource_scope_root_resource="/goods-rest"/>
+<resource_scope_roots resource_scope_root_resource="/goods-search"/>
+<resource_scope_roots resource_scope_root_resource="/goods-sso"/>
+<resource_scope_roots resource_scope_root_resource="/goods-tools-common"/>
+<resource_scope_roots resource_scope_root_resource="/goods-websocket"/>
+</org.eclipse.team.ui.TEAMSUBSRCIBERSETTINGS>
+</data>
+</participant>
+</syncparticipants>

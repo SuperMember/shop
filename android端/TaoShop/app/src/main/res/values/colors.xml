@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <!--<color name="colorPrimary">#ffffff</color>-->
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="tabHostBg">#F6F6F6</color>
+    <color name="tabBg">#F6F6F6</color>
+    <color name="milk_white">#F5F5F5</color>
+    <color name="white">#ffffff</color>
+    <color name="register_bg_color">#F7F7F7</color>
+    <color name="register_hint_text_color">#AEAEAE</color>
+    <color name="textColor_gray">#cccccc</color>
+    <color name="login_btn_text_color">#0fc4d9</color>
+
+    <color name="blue">#1957de</color>
+    <color name="red">#f50404</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="trantracent">#22000000</color>
+    <color name="trantracent_wode">#55000000</color>
+    <color name="deep_transparent">#bb000000</color>
+    <color name="grey_text_color_normal">#8A8A8A</color>
+    <color name="grey_line_bg">#E4E4E4</color>
+    <color name="original_border_color">#F18459</color>
+    <color name="grey_normal_bg">#EEEEEE</color>
+
+    <color name="gray_light">#e4e4e7</color>
+
+    <!-- 灰色 -->
+    <color name="grey_color1">#333333</color>
+    <color name="grey_color2">#666666</color>
+    <color name="grey_color3">#999999</color>
+    <!-- 橙色 -->
+    <color name="orange_color">#de6838</color>
+
+    <color name="page_backgroup">#f2f2f2</color>
+    <color name="text_color">#938b8b</color>
+
+    <color name="name_selector_color">#cccccc</color>
+    <color name="color_8290AF">#8290AF</color>
+
+    <color name="grid_red">#d2391d</color>
+    <color name="grid_white">#a49f9f</color>
+    <color name="grid_blue">#1859da</color>
+    <color name="grid_yellow">#edcc0d</color>
+    <color name="grid_pink">#df129b</color>
+    <color name="grid_green">#21e613</color>
+    <color name="grid_purple">#bc13da</color>
+    <color name="grid_orange">#d27c18</color>
+</resources>

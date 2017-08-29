@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.search.mapper.ItemMapper">
+	<sql id="Base_Column_List">
+		a.id, a.title, a.sell_point ,a.price, a.image,
+		a.status,a.muser_id,
+		a.num, b. NAME
+	</sql>
+	<select id="getItemList" resultType="com.goods.search.pojo.Item">
+		SELECT
+		a.id,
+		a.title,
+		a.sell_point sellPoint,
+		a.price,
+		a.image,
+		a.status,
+		a.muser_id,
+		a.num,
+		b. NAME cidname
+		FROM
+		tb_item a
+		LEFT JOIN tb_item_cat b ON a.cid =
+		b.id
+	</select>
+	<select id="selectByPrimaryKey" resultType="com.goods.search.pojo.Item"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from tb_item a
+		LEFT JOIN tb_item_cat b ON a.cid = b.id
+		where a.id =
+		#{id,jdbcType=BIGINT}
+	</select>
+</mapper>

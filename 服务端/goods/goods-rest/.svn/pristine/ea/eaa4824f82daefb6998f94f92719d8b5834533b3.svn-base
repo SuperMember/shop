@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.rest.mapper.GoodDetailMapper">
+	<resultMap type="com.goods.rest.pojo.ItemDetail" id="result">
+		<result property="content" column="item_desc" />
+		<association property="tbComment" javaType="com.goods.manager.pojo.TbComments">
+			<id property="id" column="id" />
+			<result property="muserId" column="muser_id" />
+			<result property="comments" column="comments" />
+			<result property="time" column="time" />
+			<result property="degree" column="degree" />
+			<result property="buyername" column="buyername" />
+			<result property="pic" column="pic" />
+			<result property="soldid" column="soldid" />
+			<result property="itemid" column="itemId" />
+		</association>
+	</resultMap>
+	<select id="getDetail" resultMap="result" parameterType="long">
+		select
+		b.item_desc,
+		c.comments,
+		c.time,
+		c.muser_id,
+		c.degree,
+		c.buyername,
+		c.pic,
+		c.soldid,
+		c.itemId
+		from tb_item a ,tb_item_desc b ,tb_comments
+		c
+		WHERE
+		a.id=#{id} and a.id=b.item_id and c.itemId=a.id
+		order by c.time
+		desc
+	</select>
+
+
+	<select id="getGoods" resultType="com.goods.manager.pojo.TbItemResult">
+		SELECT
+		* from tb_item_cat a ,tb_item b 
+		where a.id=b.cid and a.parent_id=#{parentId}
+		limit #{page},#{rows}
+	</select>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.goods"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="goods-manager-pojo"/>
+			<item value="goods-manager"/>
+			<item value="goods-manager-pj"/>
+			<item value="goods-rest"/>
+			<item value="goods-parent"/>
+			<item value="goods-comments"/>
+			<item value="goods-search"/>
+			<item value="goods-logistics"/>
+			<item value="goods-sso"/>
+			<item value="goods-order"/>
+			<item value="goods-manager-mapper"/>
+			<item value="goods-manager-web"/>
+			<item value="goods-manager-service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-search"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="goods-manager-pojo"/>
+			<item value="goods-manager-pj"/>
+			<item value="goods-manager-mapper"/>
+			<item value="goods-manager-web"/>
+			<item value="goods-manager-service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-manager\goods-manager-web\src\test\java\com\test\addGoods.java"/>
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-manager\goods-manager-web\src\main\webapp\static\showcomments.html"/>
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-manager\goods-manager-web\src\main\webapp\static\showgoods.jsp"/>
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-manager"/>
+			<item value="F:\Program Files (x86)\eclipse文件\goods\goods-manager\goods-manager-web\src\main\java\com\goods\manager\controller\CommentController.java"/>
+			<item value="F:\Program Files (x86)\eclipse文件\goods"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="org.goods.manager.pojo"/>
+		</list>
+		<list key="groupId">
+			<item value="com.goods"/>
+		</list>
+		<list key="artifactId">
+			<item value="goods-manager-pojo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

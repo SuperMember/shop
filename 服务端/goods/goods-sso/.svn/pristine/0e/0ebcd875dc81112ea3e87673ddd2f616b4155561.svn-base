@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.sso.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.goods.sso.pojo.UserEntity">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="updated" property="updated" jdbcType="TIMESTAMP" />
+		<result column="seller" property="seller" jdbcType="INTEGER" />
+		<collection property="tbAddrs" ofType="com.goods.manager.pojo.TbAddr">
+			<id column="addrId" property="addrid" jdbcType="BIGINT" />
+			<result column="muserId" property="muserid" jdbcType="BIGINT" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="tel" property="tel" jdbcType="VARCHAR" />
+			<result column="addr" property="addr" jdbcType="VARCHAR" />
+			<result column="defaultaddr" property="defaultaddr" jdbcType="INTEGER" />
+			<result column="area" property="area" jdbcType="VARCHAR" />
+		</collection>
+	</resultMap>
+
+	<select id="getLogin" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select a.*,b.* from tb_user a,tb_addr b
+		where a.id=b.muserId and
+		a.username=#{username}
+	</select>
+
+</mapper>

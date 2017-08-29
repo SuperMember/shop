@@ -1,0 +1,5 @@
+127.0.0.1 - - [10/Jun/2017:19:57:36 +0800] "GET /order/showorder/1?page=1&rows=8 HTTP/1.1" 200 913 http-bio-8081-exec-1 1771
+127.0.0.1 - - [10/Jun/2017:20:00:22 +0800] "GET /order/showorder/1?page=1&rows=8 HTTP/1.1" 200 913 http-bio-8081-exec-3 233
+127.0.0.1 - - [10/Jun/2017:20:06:41 +0800] "GET /order/sold?itemId=1 HTTP/1.1" 200 73 http-bio-8081-exec-5 448
+127.0.0.1 - - [10/Jun/2017:20:06:46 +0800] "GET /order/sold?itemId=1 HTTP/1.1" 200 570 http-bio-8081-exec-7 76
+127.0.0.1 - - [10/Jun/2017:20:16:00 +0800] "GET /order/sold?itemId=1 HTTP/1.1" 200 570 http-bio-8081-exec-9 19290

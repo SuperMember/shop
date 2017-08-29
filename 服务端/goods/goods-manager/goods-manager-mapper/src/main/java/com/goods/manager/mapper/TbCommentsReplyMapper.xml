@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.manager.mapper.TbCommentsReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.goods.manager.pojo.TbCommentsReply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="replycomments" property="replycomments" jdbcType="VARCHAR" />
+    <result column="replytime" property="replytime" jdbcType="TIMESTAMP" />
+    <result column="parentId" property="parentid" jdbcType="BIGINT" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="replyid" property="replyid" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="replyname" property="replyname" jdbcType="VARCHAR" />
+    <result column="muserId" property="muserid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, replycomments, replytime, parentId, updated, pic, item_id, replyid, userId, name, 
+    replyname, muserId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.goods.manager.pojo.TbCommentsReplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_comments_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comments_reply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_comments_reply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.goods.manager.pojo.TbCommentsReplyExample" >
+    delete from tb_comments_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.goods.manager.pojo.TbCommentsReply" >
+    insert into tb_comments_reply (id, replycomments, replytime, 
+      parentId, updated, pic, 
+      item_id, replyid, userId, 
+      name, replyname, muserId
+      )
+    values (#{id,jdbcType=BIGINT}, #{replycomments,jdbcType=VARCHAR}, #{replytime,jdbcType=TIMESTAMP}, 
+      #{parentid,jdbcType=BIGINT}, #{updated,jdbcType=TIMESTAMP}, #{pic,jdbcType=VARCHAR}, 
+      #{itemId,jdbcType=BIGINT}, #{replyid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{replyname,jdbcType=VARCHAR}, #{muserid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.goods.manager.pojo.TbCommentsReply" >
+    insert into tb_comments_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="replycomments != null" >
+        replycomments,
+      </if>
+      <if test="replytime != null" >
+        replytime,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="replyid != null" >
+        replyid,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="replyname != null" >
+        replyname,
+      </if>
+      <if test="muserid != null" >
+        muserId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="replycomments != null" >
+        #{replycomments,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        #{replytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="replyid != null" >
+        #{replyid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="replyname != null" >
+        #{replyname,jdbcType=VARCHAR},
+      </if>
+      <if test="muserid != null" >
+        #{muserid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.goods.manager.pojo.TbCommentsReplyExample" resultType="java.lang.Integer" >
+    select count(*) from tb_comments_reply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_comments_reply
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.replycomments != null" >
+        replycomments = #{record.replycomments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replytime != null" >
+        replytime = #{record.replytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.parentid != null" >
+        parentId = #{record.parentid,jdbcType=BIGINT},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pic != null" >
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.replyid != null" >
+        replyid = #{record.replyid,jdbcType=BIGINT},
+      </if>
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyname != null" >
+        replyname = #{record.replyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.muserid != null" >
+        muserId = #{record.muserid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_comments_reply
+    set id = #{record.id,jdbcType=BIGINT},
+      replycomments = #{record.replycomments,jdbcType=VARCHAR},
+      replytime = #{record.replytime,jdbcType=TIMESTAMP},
+      parentId = #{record.parentid,jdbcType=BIGINT},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      replyid = #{record.replyid,jdbcType=BIGINT},
+      userId = #{record.userid,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      replyname = #{record.replyname,jdbcType=VARCHAR},
+      muserId = #{record.muserid,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goods.manager.pojo.TbCommentsReply" >
+    update tb_comments_reply
+    <set >
+      <if test="replycomments != null" >
+        replycomments = #{replycomments,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null" >
+        replytime = #{replytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="replyid != null" >
+        replyid = #{replyid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="replyname != null" >
+        replyname = #{replyname,jdbcType=VARCHAR},
+      </if>
+      <if test="muserid != null" >
+        muserId = #{muserid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goods.manager.pojo.TbCommentsReply" >
+    update tb_comments_reply
+    set replycomments = #{replycomments,jdbcType=VARCHAR},
+      replytime = #{replytime,jdbcType=TIMESTAMP},
+      parentId = #{parentid,jdbcType=BIGINT},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      pic = #{pic,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=BIGINT},
+      replyid = #{replyid,jdbcType=BIGINT},
+      userId = #{userid,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      replyname = #{replyname,jdbcType=VARCHAR},
+      muserId = #{muserid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

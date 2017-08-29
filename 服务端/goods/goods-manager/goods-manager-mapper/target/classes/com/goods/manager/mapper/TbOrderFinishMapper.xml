@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.manager.mapper.TbOrderFinishMapper">
+
+	<select id="getAllItem" resultType="com.goods.manager.pojo.TbOrderFinish" parameterType="long">
+		select
+		a.end_time,
+		a.user_id,
+		a.buyer_nick,
+		b.item_id,
+		b.num,
+		b.title,
+		b.price,
+		b.total_fee,
+		b.pic_path,
+		c.receiver_name,
+		c.receiver_mobile,
+		c.receiver_city,
+		c.receiver_district,
+		c.receiver_address,
+		c.receiver_zip
+		from tb_order a
+		LEFT JOIN
+		(tb_order_item b LEFT JOIN tb_order_shipping
+		c ON
+		b.order_id=c.order_id) ON a.order_id=b.order_id 
+		where a.muser_id=#{id} and a.status=5
+	</select>
+</mapper>

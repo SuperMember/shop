@@ -1,0 +1,9 @@
+com\goods\logistics\dao\impl\JedisClientCluster.class
+com\goods\logistics\dao\impl\JedisClientSingle.class
+com\goods\logistics\pojo\Data.class
+com\goods\logistics\pojo\LogisticsJsonDetail.class
+com\goods\logistics\pojo\LogisticsJsonResult.class
+com\goods\logistics\controller\LogisticsController.class
+com\goods\logistics\pojo\Auto.class
+com\goods\logistics\service\impl\LogisticsServiceImpl.class
+com\goods\logistics\service\LogisticsService.class

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本更新</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+<link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+<style>
+.uploader {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	cursor: default;
+	padding: 0;
+	margin: 10px 0px;
+	-moz-box-shadow: 0px 0px 5px #ddd;
+	-webkit-box-shadow: 0px 0px 5px #ddd;
+	box-shadow: 0px 0px 5px #ddd;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.filename {
+	float: left;
+	display: inline-block;
+	outline: 0 none;
+	height: 32px;
+	width: 180px;
+	margin: 0;
+	padding: 8px 10px;
+	overflow: hidden;
+	cursor: default;
+	border: 1px solid;
+	border-right: 0;
+	font: 9pt/100% Arial, Helvetica, sans-serif;
+	color: #777;
+	text-shadow: 1px 1px 0px #fff;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	-moz-border-radius: 5px 0px 0px 5px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+	border-radius: 5px 0px 0px 5px;
+	background: #f5f5f5;
+	background: -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa),
+		color-stop(100%, #f5f5f5));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',
+		endColorstr='#f5f5f5', GradientType=0);
+	border-color: #ccc;
+	-moz-box-shadow: 0px 0px 1px #fff inset;
+	-webkit-box-shadow: 0px 0px 1px #fff inset;
+	box-shadow: 0px 0px 1px #fff inset;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.button {
+	float: left;
+	height: 32px;
+	display: inline-block;
+	outline: 0 none;
+	padding: 8px 12px;
+	margin: 0;
+	cursor: pointer;
+	border: 1px solid;
+	font: bold 9pt/100% Arial, Helvetica, sans-serif;
+	-moz-border-radius: 0px 5px 5px 0px;
+	-webkit-border-radius: 0px 5px 5px 0px;
+	border-radius: 0px 5px 5px 0px;
+	-moz-box-shadow: 0px 0px 1px #fff inset;
+	-webkit-box-shadow: 0px 0px 1px #fff inset;
+	box-shadow: 0px 0px 1px #fff inset;
+}
+
+.uploader input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	height: 30px;
+	cursor: pointer;
+	filter: alpha(opacity = 0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+
+input[type=button]::-moz-focus-inner {
+	padding: 0;
+	border: 0 none;
+	-moz-box-sizing: content-box;
+}
+
+input[type=button]::-webkit-focus-inner {
+	padding: 0;
+	border: 0 none;
+	-webkit-box-sizing: content-box;
+}
+
+input[type=text]::-moz-focus-inner {
+	padding: 0;
+	border: 0 none;
+	-moz-box-sizing: content-box;
+}
+
+input[type=text]::-webkit-focus-inner {
+	padding: 0;
+	border: 0 none;
+	-webkit-box-sizing: content-box;
+}
+
+.black .button {
+	color: #fff;
+	text-shadow: 1px 1px 0px #111111;
+	background: #222222;
+	background: -moz-linear-gradient(top, #444444 0%, #222222 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444444),
+		color-stop(100%, #222222));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444',
+		endColorstr='#222222', GradientType=0);
+	border-color: #111111;
+}
+
+.black:hover .button {
+	background: #444444;
+	background: -moz-linear-gradient(top, #222222 0%, #444444 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222),
+		color-stop(100%, #444444));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#222222',
+		endColorstr='#444444', GradientType=0);
+}
+</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form action="" method="post" id="form"
+							enctype="multipart/form-data" class="form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">app名称</label>
+								<div class="col-sm-10">
+									<p class="form-control-static" name="appname" id="name"></p>
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">app最新版本</label>
+								<div class="col-sm-10">
+									<p class="form-control-static" name="version" id="version"></p>
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">app更新版本</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="appLVersion">
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">app更新内容</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" name="updatecontent">
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">上传apk文件：</label>
+								<div class="uploader black">
+									<input type="text" class="filename" readonly /> <input
+										type="button" name="file" class="button" value="Browse..." />
+									<input type="file" size="30" />
+								</div>
+							</div>
+							<div class="hr-line-dashed"></div>
+							<div class="form-group">
+								<div class="col-sm-4 col-sm-offset-2">
+									<button class="btn btn-primary" type="submit" onclick="submit">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		function submit() {
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : "/update/app",
+				data : $('#form').serialize(),// 你的formid
+				async : false,
+				error : function(request) {
+					alert("Connection error");
+				},
+				success : function(data) {
+					$("#commonLayout_appcreshi").parent().html(data);
+				}
+			});
+		}
+		$(document).ready(
+				function() {
+					$.ajax({
+						url : "/check/app",
+						success : function(data) {
+							if (data.status == 200) {
+								var json = eval(data.data);
+								$("#name").html(json.appname);
+								$("#version").html(json.appLVersion);
+							}
+						}
+					});
+
+					//表单提交
+
+					$("input[type=file]").change(
+							function() {
+								$(this).parents(".uploader").find(".filename")
+										.val($(this).val());
+							});
+					$("input[type=file]").each(
+							function() {
+								if ($(this).val() == "") {
+									$(this).parents(".uploader").find(
+											".filename").val(
+											"No file selected...");
+								}
+							});
+				});
+	</script>
+</body>
+</html>

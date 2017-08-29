@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>版本更新</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+<link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+</head>
+<body>
+	<div class="col-md-12">
+	
+		<form action="/update/app" method="post">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">app名称：</label>
+				<div class="col-sm-9">
+					<p class="form-control-static" name="appname" id="name"></p>
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">app最新版本：</label>
+				<div class="col-sm-9">
+					<p class="form-control-static" id="version"></p>
+				</div>
+			</div>
+			<br> <input type="hidden" id="file" /> <br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">app更新版本：</label>
+				<div class="col-sm-9">
+					<input type="text" name="appLVersion" class="form-control"
+						placeholder="请输入版本号">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">此次更新内容：</label>
+				<div class="col-sm-9">
+					<textarea name="updatecontent" class="form-control"
+						placeholder="请输入更新内容"></textarea>
+				</div>
+			</div>
+			<br>
+			<div class="col-md-12">
+				<div class="form-group">
+					<div class="col-sm-12 col-sm-offset-3">
+						<button class="btn btn-primary" type="submit">保存内容</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+	</div>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.ajax({
+				url : "/check/app",
+				success : function(data) {
+					if (data.status == 200) {
+						var json = eval(data.data);
+						$("#name").html(json.appname);
+						$("#version").html(json.appLVersion);
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

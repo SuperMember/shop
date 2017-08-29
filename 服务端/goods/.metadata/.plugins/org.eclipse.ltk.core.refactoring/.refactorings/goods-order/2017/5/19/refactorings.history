@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;TbOrderEntityMapper.xml&apos; to &apos;goods-rest/src/main/java/com.goods.rest.mapper&apos;&#x0D;&#x0A;- Original project: &apos;goods-order&apos;&#x0D;&#x0A;- Destination element: &apos;goods-rest/src/main/java/com.goods.rest.mapper&apos;&#x0D;&#x0A;- Original element: &apos;TbOrderEntityMapper.xml&apos;" description="Copy file" destination="=goods-rest/src\/main\/java&lt;com.goods.rest.mapper" element1="src/main/java/com/goods/order/mapper/TbOrderEntityMapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1494245545395" units="0" version="1.0"/>
+</session>

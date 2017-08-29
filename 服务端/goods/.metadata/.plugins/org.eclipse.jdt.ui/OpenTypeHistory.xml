@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{UserService.java[UserService" modifiers="513" timestamp="1493474329396"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{GoodsItemService.java[GoodsItemService" modifiers="513" timestamp="1492588223384"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{FileService.java[FileService" modifiers="513" timestamp="1493528660207"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{CatService.java[CatService" modifiers="513" timestamp="1491186182402"/>
+<typeInfo handle="=goods-order/src\/main\/java&lt;com.goods.order.service{OrderService.java[OrderService" modifiers="513" timestamp="1493294297823"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{CommentsService.java[CommentsService" modifiers="513" timestamp="1492351824614"/>
+<typeInfo handle="=goods-manager-service/F:\/Program Files\/Java\/jre\/lib\/rt.jar&lt;org.w3c.dom(Comment.class[Comment" modifiers="1537" timestamp="1482502165331"/>
+<typeInfo handle="=goods-manager-service/C:\/Users\/lenovo\/.m2\/repository\/com\/github\/jsqlparser\/jsqlparser\/0.9\/jsqlparser-0.9.jar&lt;net.sf.jsqlparser.statement.select(OrderByVisitor.class[OrderByVisitor" modifiers="1537" timestamp="1437472774207"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{LogisticsService.java[LogisticsService" modifiers="513" timestamp="1493384998285"/>
+<typeInfo handle="=goods-comments/src\/main\/java&lt;com.goods.comments.service{CommentService.java[CommentService" modifiers="513" timestamp="1495895791561"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{IndexService.java[IndexService" modifiers="513" timestamp="1492738995912"/>
+<typeInfo handle="=goods-websocket/src\/main\/java&lt;com.goods.message.service{WebSocketService.java[WebSocketService" modifiers="513" timestamp="1493045530846"/>
+<typeInfo handle="=goods-rest/src\/main\/java&lt;com.goods.rest.service{AppService.java[AppService" modifiers="513" timestamp="1493519750023"/>
+<typeInfo handle="=goods-manager-service/src\/main\/java&lt;com.goods.manager.service{AppService.java[AppService" modifiers="513" timestamp="1493528308161"/>
+</typeInfoHistroy>

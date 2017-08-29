@@ -1,0 +1,10 @@
+com\goods\websocket\handshake\MyWebSocketHandShake.class
+com\goods\mina\session\SessionManager.class
+com\goods\websocket\handler\MyWebSocketHandler$3.class
+com\goods\mina\handler\ServerHandler.class
+com\goods\websocket\handler\MyWebSocketHandler.class
+com\goods\message\service\impl\WebSocketServiceImpl.class
+com\goods\websocket\handler\MyWebSocketHandler$2.class
+com\goods\message\service\WebSocketService.class
+com\goods\websocket\handler\MyWebSocketHandler$1.class
+com\goods\message\listener\CustomListener.class

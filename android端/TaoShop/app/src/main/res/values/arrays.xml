@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classify">
+        <item>74</item>
+        <item>161</item>
+        <item>558</item>
+        <item>580</item>
+        <item>749</item>
+        <item>1031</item>
+    </string-array>
+</resources>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.order.mapper.TbOrderEntityMapper">
+
+	<select id="getItemList" resultType="com.goods.order.pojo.OrderItem"
+		parameterType="long">
+		select
+		a.order_id,
+		a.payment,
+		a.payment_time,
+		a.post_fee,
+		a.`status`,
+		a.create_time,
+		a.update_time,
+		a.consign_time,
+		a.end_time,
+		a.close_time,
+		a.user_id,
+		a.buyer_message,
+		a.buyer_nick,
+		a.buyer_rate,
+		b.item_id,
+		b.num,
+		b.title,
+		b.price,
+		b.total_fee,
+		c.receiver_name,
+		c.receiver_phone,
+		c.receiver_mobile,
+		c.receiver_state,
+		c.receiver_city,
+		c.receiver_district,
+		c.receiver_address,
+		c.receiver_zip
+		from tb_order a
+		LEFT JOIN
+		(tb_order_item b LEFT JOIN tb_order_shipping
+		c ON
+		b.order_id=c.order_id) ON a.order_id=b.order_id and
+		a.muser_id=#{id}
+	</select>
+	<select id="getItemListByType" resultType="com.goods.order.pojo.OrderItem">
+		select
+		a.order_id,
+		a.payment,
+		a.payment_time,
+		a.post_fee,
+		a.`status`,
+		a.create_time,
+		a.update_time,
+		a.consign_time,
+		a.end_time,
+		a.close_time,
+		a.user_id,
+		a.buyer_message,
+		a.buyer_nick,
+		a.buyer_rate,
+		b.item_id,
+		b.num,
+		b.title,
+		b.price,
+		b.total_fee,
+		c.receiver_name,
+		c.receiver_phone,
+		c.receiver_mobile,
+		c.receiver_state,
+		c.receiver_city,
+		c.receiver_district,
+		c.receiver_address,
+		c.receiver_zip
+		from tb_order a
+		LEFT JOIN
+		(tb_order_item b LEFT JOIN tb_order_shipping
+		c ON
+		b.order_id=c.order_id) ON a.order_id=b.order_id and
+		a.muser_id=#{id}
+		where a.`status`=#{type}
+	</select>
+
+	<!--买家 -->
+	<select id="getUserItem" resultType="com.goods.order.pojo.OrderItem"
+		parameterType="long">
+		select
+		a.order_id,
+		a.payment,
+		a.payment_time,
+		a.post_fee,
+		a.`status`,
+		a.create_time,
+		a.update_time,
+		a.consign_time,
+		a.end_time,
+		a.close_time,
+		a.user_id,
+		a.buyer_message,
+		a.buyer_nick,
+		a.buyer_rate,
+		b.item_id,
+		b.num,
+		b.title,
+		b.price,
+		b.total_fee,
+		c.receiver_name,
+		c.receiver_phone,
+		c.receiver_mobile,
+		c.receiver_state,
+		c.receiver_city,
+		c.receiver_district,
+		c.receiver_address,
+		c.receiver_zip
+		from tb_order a
+		LEFT JOIN
+		(tb_order_item b LEFT JOIN tb_order_shipping
+		c ON
+		b.order_id=c.order_id) ON a.order_id=b.order_id and
+		a.user_id=#{userId}
+	</select>
+	<select id="getUserItemByType" resultType="com.goods.order.pojo.OrderItem">
+		select
+		a.order_id,
+		a.payment,
+		a.payment_time,
+		a.post_fee,
+		a.`status`,
+		a.create_time,
+		a.update_time,
+		a.consign_time,
+		a.end_time,
+		a.close_time,
+		a.user_id,
+		a.buyer_message,
+		a.buyer_nick,
+		a.buyer_rate,
+		b.item_id,
+		b.num,
+		b.title,
+		b.price,
+		b.total_fee,
+		c.receiver_name,
+		c.receiver_phone,
+		c.receiver_mobile,
+		c.receiver_state,
+		c.receiver_city,
+		c.receiver_district,
+		c.receiver_address,
+		c.receiver_zip
+		from tb_order a
+		LEFT JOIN
+		(tb_order_item b LEFT JOIN tb_order_shipping
+		c ON
+		b.order_id=c.order_id) ON a.order_id=b.order_id and
+		a.user_id=#{userId}
+		where a.`status`=#{type}
+	</select>
+</mapper>

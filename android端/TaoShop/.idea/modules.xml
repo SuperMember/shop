@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RecyclerViewHelper/RecyclerViewHelper.iml" filepath="$PROJECT_DIR$/RecyclerViewHelper/RecyclerViewHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScrollerViewlibrary/ScrollerViewlibrary.iml" filepath="$PROJECT_DIR$/ScrollerViewlibrary/ScrollerViewlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TaoShop.iml" filepath="$PROJECT_DIR$/TaoShop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

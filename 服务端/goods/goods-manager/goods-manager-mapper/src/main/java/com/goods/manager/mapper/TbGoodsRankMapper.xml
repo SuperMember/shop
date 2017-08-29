@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.manager.mapper.TbGoodsRankMapper">
+	<resultMap id="BaseResultMap" type="com.goods.manager.pojo.TbGoodsRank">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="goodname" property="goodname" jdbcType="VARCHAR" />
+		<result column="income" property="income" jdbcType="BIGINT" />
+		<result column="ordernum" property="ordernum" jdbcType="BIGINT" />
+		<result column="itemId" property="itemid" jdbcType="BIGINT" />
+		<result column="userId" property="userid" jdbcType="BIGINT" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		id, goodname, income, ordernum, itemId, userId
+	</sql>
+	<select id="getTbGoodsRank" resultMap="BaseResultMap">
+		select d.name
+		goodname,b.total_fee income from tb_order a,tb_order_item b,tb_item
+		c,tb_item_cat d
+		where a.order_id=b.order_id and b.item_id=c.id and c.cid=d.id and
+		d.name=#{name} and a.muser_id=#{userId} and b.order_id=#{orderId};
+	</select>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.goods.manager.pojo.TbGoodsRankExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from tb_goods_rank
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from tb_goods_rank
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		tb_goods_rank
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.goods.manager.pojo.TbGoodsRankExample">
+		delete from tb_goods_rank
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.goods.manager.pojo.TbGoodsRank">
+		insert into tb_goods_rank (id,
+		goodname, income,
+		ordernum, itemId, userId
+		)
+		values
+		(#{id,jdbcType=BIGINT}, #{goodname,jdbcType=VARCHAR},
+		#{income,jdbcType=BIGINT},
+		#{ordernum,jdbcType=BIGINT},
+		#{itemid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.goods.manager.pojo.TbGoodsRank">
+		insert into tb_goods_rank
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="goodname != null">
+				goodname,
+			</if>
+			<if test="income != null">
+				income,
+			</if>
+			<if test="ordernum != null">
+				ordernum,
+			</if>
+			<if test="itemid != null">
+				itemId,
+			</if>
+			<if test="userid != null">
+				userId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="goodname != null">
+				#{goodname,jdbcType=VARCHAR},
+			</if>
+			<if test="income != null">
+				#{income,jdbcType=BIGINT},
+			</if>
+			<if test="ordernum != null">
+				#{ordernum,jdbcType=BIGINT},
+			</if>
+			<if test="itemid != null">
+				#{itemid,jdbcType=BIGINT},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.goods.manager.pojo.TbGoodsRankExample"
+		resultType="java.lang.Integer">
+		select count(*) from tb_goods_rank
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update tb_goods_rank
+		<set>
+			<if test="record.id != null">
+				id = #{record.id,jdbcType=BIGINT},
+			</if>
+			<if test="record.goodname != null">
+				goodname = #{record.goodname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.income != null">
+				income = #{record.income,jdbcType=BIGINT},
+			</if>
+			<if test="record.ordernum != null">
+				ordernum = #{record.ordernum,jdbcType=BIGINT},
+			</if>
+			<if test="record.itemid != null">
+				itemId = #{record.itemid,jdbcType=BIGINT},
+			</if>
+			<if test="record.userid != null">
+				userId = #{record.userid,jdbcType=BIGINT},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update tb_goods_rank
+		set id = #{record.id,jdbcType=BIGINT},
+		goodname =
+		#{record.goodname,jdbcType=VARCHAR},
+		income =
+		#{record.income,jdbcType=BIGINT},
+		ordernum =
+		#{record.ordernum,jdbcType=BIGINT},
+		itemId =
+		#{record.itemid,jdbcType=BIGINT},
+		userId =
+		#{record.userid,jdbcType=BIGINT}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.goods.manager.pojo.TbGoodsRank">
+		update tb_goods_rank
+		<set>
+			<if test="goodname != null">
+				goodname = #{goodname,jdbcType=VARCHAR},
+			</if>
+			<if test="income != null">
+				income = #{income,jdbcType=BIGINT},
+			</if>
+			<if test="ordernum != null">
+				ordernum = #{ordernum,jdbcType=BIGINT},
+			</if>
+			<if test="itemid != null">
+				itemId = #{itemid,jdbcType=BIGINT},
+			</if>
+			<if test="userid != null">
+				userId = #{userid,jdbcType=BIGINT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.goods.manager.pojo.TbGoodsRank">
+		update
+		tb_goods_rank
+		set goodname = #{goodname,jdbcType=VARCHAR},
+		income =
+		#{income,jdbcType=BIGINT},
+		ordernum = #{ordernum,jdbcType=BIGINT},
+		itemId = #{itemid,jdbcType=BIGINT},
+		userId = #{userid,jdbcType=BIGINT}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

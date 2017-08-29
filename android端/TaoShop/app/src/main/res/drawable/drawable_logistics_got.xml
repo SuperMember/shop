@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="bottom"
+        android:top="56dp">
+        <bitmap android:src="@mipmap/icon_line_v" />
+    </item>
+    <item
+        android:id="@+id/get"
+        android:gravity="top">
+        <bitmap android:src="@mipmap/icon_circle_get" />
+    </item>
+</layer-list>

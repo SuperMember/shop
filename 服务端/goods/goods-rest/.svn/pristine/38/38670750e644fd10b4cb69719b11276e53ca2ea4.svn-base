@@ -1,0 +1,102 @@
+package com.goods.rest.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.goods.manager.mapper.TbCommentsMapper;
+import com.goods.manager.mapper.TbItemCatMapper;
+import com.goods.manager.mapper.TbItemDescMapper;
+import com.goods.manager.mapper.TbItemMapper;
+import com.goods.manager.pojo.TbComments;
+import com.goods.manager.pojo.TbCommentsExample;
+import com.goods.manager.pojo.TbCommentsExample.Criteria;
+import com.goods.manager.pojo.TbCommentsResult;
+import com.goods.manager.pojo.TbItemCat;
+import com.goods.manager.pojo.TbItemCatExample;
+import com.goods.manager.pojo.TbItemDesc;
+import com.goods.manager.pojo.TbItemExample;
+import com.goods.manager.pojo.TbItemResult;
+import com.goods.rest.mapper.GoodDetailMapper;
+import com.goods.rest.pojo.ItemDetail;
+import com.goods.rest.service.GoodItemService;
+import com.goods.tools.common.util.JsonUtils;
+import com.goods.tools.common.util.TaotaoResult;
+
+@Service
+public class GoodItemServiceImpl implements GoodItemService{
+	
+	@Autowired
+	private TbCommentsMapper tbCommentsMapper;
+	@Autowired
+	private TbItemDescMapper tbItemDescMapper;
+	
+	@Autowired
+	private TbItemCatMapper tbItemCatMapper;
+	
+	@Autowired
+	private TbItemMapper tbItemMapper;
+	
+	@Autowired
+	private GoodDetailMapper goodDetailMapper;
+	
+	//根据商品id获取相关信息
+	public ItemDetail getDetail(long itemId) {
+		ItemDetail itemDetail=new ItemDetail();
+		try {
+			//获取评论
+			TbCommentsExample tbCommentsExample=new TbCommentsExample();
+			Criteria criteria = tbCommentsExample.createCriteria();
+			criteria.andItemidEqualTo(itemId);
+			List<TbCommentsResult> list = tbCommentsMapper.selectByExample(tbCommentsExample);
+			if(list!=null && list.size()!=0){
+				itemDetail.setTbComment(list.get(0));
+			}else{
+				itemDetail.setTbComment(null);
+			}
+			//获取详情
+			TbItemDesc itemDesc = tbItemDescMapper.selectByPrimaryKey(itemId);
+			itemDetail.setContent(itemDesc.getItemDesc());
+			return itemDetail;
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}
+		return itemDetail;
+	}
+
+
+	//获取商品类别
+	public TaotaoResult getClassify(long parentId) {
+		try {
+			TbItemCatExample tbItemCatExample=new TbItemCatExample();
+			com.goods.manager.pojo.TbItemCatExample.Criteria criteria = tbItemCatExample.createCriteria();
+			criteria.andParentIdEqualTo(parentId);
+			List<TbItemCat> list = tbItemCatMapper.selectByExample(tbItemCatExample);
+			if(list!=null && list.size()!=0){
+				String json = JsonUtils.objectToJson(list);
+				return TaotaoResult.ok(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "获取失败，请稍后重试");
+	}
+
+
+	//根据类别获取商品
+	public TaotaoResult getGoods(long parentId, long page, long rows) {
+		try {
+			List<TbItemResult> list = goodDetailMapper.getGoods(parentId, (page-1)*rows, rows);
+			if(list!=null && list.size()!=0){
+				String json = JsonUtils.objectToJson(list);
+				return TaotaoResult.ok(json);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "暂无该商品");
+	}
+
+}

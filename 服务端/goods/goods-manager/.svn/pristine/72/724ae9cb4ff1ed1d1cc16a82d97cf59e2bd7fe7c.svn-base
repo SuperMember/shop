@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goods.manager.mapper.TbDatasMapper" >
+  <resultMap id="BaseResultMap" type="com.goods.manager.pojo.TbDatas" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ordernum" property="ordernum" jdbcType="BIGINT" />
+    <result column="finishnum" property="finishnum" jdbcType="BIGINT" />
+    <result column="closenum" property="closenum" jdbcType="BIGINT" />
+    <result column="income" property="income" jdbcType="BIGINT" />
+    <result column="muserid" property="muserid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, ordernum, finishnum, closenum, income, muserid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.goods.manager.pojo.TbDatasExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_datas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_datas
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_datas
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.goods.manager.pojo.TbDatasExample" >
+    delete from tb_datas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.goods.manager.pojo.TbDatas" >
+    insert into tb_datas (id, ordernum, finishnum, 
+      closenum, income, muserid
+      )
+    values (#{id,jdbcType=BIGINT}, #{ordernum,jdbcType=BIGINT}, #{finishnum,jdbcType=BIGINT}, 
+      #{closenum,jdbcType=BIGINT}, #{income,jdbcType=BIGINT}, #{muserid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.goods.manager.pojo.TbDatas" >
+    insert into tb_datas
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="finishnum != null" >
+        finishnum,
+      </if>
+      <if test="closenum != null" >
+        closenum,
+      </if>
+      <if test="income != null" >
+        income,
+      </if>
+      <if test="muserid != null" >
+        muserid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=BIGINT},
+      </if>
+      <if test="finishnum != null" >
+        #{finishnum,jdbcType=BIGINT},
+      </if>
+      <if test="closenum != null" >
+        #{closenum,jdbcType=BIGINT},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=BIGINT},
+      </if>
+      <if test="muserid != null" >
+        #{muserid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.goods.manager.pojo.TbDatasExample" resultType="java.lang.Integer" >
+    select count(*) from tb_datas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_datas
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.ordernum != null" >
+        ordernum = #{record.ordernum,jdbcType=BIGINT},
+      </if>
+      <if test="record.finishnum != null" >
+        finishnum = #{record.finishnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.closenum != null" >
+        closenum = #{record.closenum,jdbcType=BIGINT},
+      </if>
+      <if test="record.income != null" >
+        income = #{record.income,jdbcType=BIGINT},
+      </if>
+      <if test="record.muserid != null" >
+        muserid = #{record.muserid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_datas
+    set id = #{record.id,jdbcType=BIGINT},
+      ordernum = #{record.ordernum,jdbcType=BIGINT},
+      finishnum = #{record.finishnum,jdbcType=BIGINT},
+      closenum = #{record.closenum,jdbcType=BIGINT},
+      income = #{record.income,jdbcType=BIGINT},
+      muserid = #{record.muserid,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goods.manager.pojo.TbDatas" >
+    update tb_datas
+    <set >
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=BIGINT},
+      </if>
+      <if test="finishnum != null" >
+        finishnum = #{finishnum,jdbcType=BIGINT},
+      </if>
+      <if test="closenum != null" >
+        closenum = #{closenum,jdbcType=BIGINT},
+      </if>
+      <if test="income != null" >
+        income = #{income,jdbcType=BIGINT},
+      </if>
+      <if test="muserid != null" >
+        muserid = #{muserid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goods.manager.pojo.TbDatas" >
+    update tb_datas
+    set ordernum = #{ordernum,jdbcType=BIGINT},
+      finishnum = #{finishnum,jdbcType=BIGINT},
+      closenum = #{closenum,jdbcType=BIGINT},
+      income = #{income,jdbcType=BIGINT},
+      muserid = #{muserid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

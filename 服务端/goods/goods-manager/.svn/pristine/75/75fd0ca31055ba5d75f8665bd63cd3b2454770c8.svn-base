@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>快递</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link href="../css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+<link href="../css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/style.min862f.css?v=4.1.0" rel="stylesheet">
+<link href="//g.alicdn.com/??tm/wuliu-kuaidi/1.0.9/kuaidi/index.css"
+	type="text/css" rel="stylesheet" />
+
+</head>
+<body class="gray-bg">
+	
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox">
+					<div class="ibox-title">
+						<h5>寄件</h5>
+					</div>
+					<div class="ibox-content">
+						<form id="form" action="/send/goods" class="wizard-big" method="post">
+							<h1>填写寄件人/收件人地址</h1>
+							<fieldset>
+
+								<div class="module j_module">
+									<div class="module-head">寄件人地址</div>
+									<div class="module-body poster">
+										<input type="hidden" name="orderId" id="orderId"
+											 />
+										<table class="senderInfo" id="J_posterSenderInfo"
+											style="display: table;">
+
+											<tr>
+												<td class="t-all"><span class="c-red">*</span>&nbsp;寄件人：</td>
+												<td><input type="text" name="name"
+													class="form-control required" /></td>
+											</tr>
+											<tr>
+												<td class="t-all"><span class="c-red">*</span>&nbsp;地址：</td>
+												<td>
+													<div class="address" id="s_address_container">
+														<select id="Province">
+														</select> <select id="City">
+														</select> <select id="Area">
+														</select>
+													</div> <input type="hidden" id="s_prov_value" name="province" /> <input
+													type="hidden" id="cityvalue" name="city" /> <input
+													type="hidden" id="s_area_value" name="area" />
+												</td>
+											</tr>
+											<tr>
+												<td>&nbsp;详细地址：</td>
+												<td><input type="text"
+													class="addressText  form-control" name="address" /></td>
+											</tr>
+											<tr>
+												<td class="t-all"><span class="c-red">*</span>&nbsp;邮编：</td>
+												<td><input type="text" name="zipcode"
+													class="form-control required" /></td>
+											</tr>
+											<tr>
+												<td class="t-all"><span class="c-red">*</span>&nbsp;手机：</td>
+												</td>
+												<td><input type="text"
+													class="mobile form-control required phone" name="mobile" />&nbsp;&nbsp;
+												</td>
+											</tr>
+
+										</table>
+									</div>
+								</div>
+							</fieldset>
+							<h1>选择快递公司</h1>
+							<fieldset>
+								<div class="row">
+									<div class="module-body postCompany">
+										
+										<table class="mui-table">
+											<colgroup>
+												<col width="40%">
+												<col width="40%">
+												<col width="20%">
+											</colgroup>
+											<tbody>
+
+												<tr>
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="1" name="company">
+														<img
+														src="//img.alicdn.com/tps/i2/T1kH40FPFcXXc_d6ve-160-80.jpg">
+														中国邮政</td>
+
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="2" name="company">
+														<img
+														src="//img.alicdn.com/tps/i2/T1q1d6FKlaXXc_d6ve-160-80.jpg">
+														EMS</td>
+
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="3" name="company">
+														<img
+														src="//img.alicdn.com/tps/i3/T1Z.V2FS8bXXc_d6ve-160-80.jpg">
+														圆通速递</td>
+
+												</tr>
+												<tr>
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="4" name="company">
+														<img
+														src="//img.alicdn.com/tps/i1/T1aPR1FLXcXXc_d6ve-160-80.jpg">
+														中通快递</td>
+
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="5" name="company">
+														<img
+														src="//img.alicdn.com/tps/i1/T1y8h0FLpcXXc_d6ve-160-80.jpg">
+														韵达快递</td>
+
+													<td class="search-table-logo"><input type="radio"
+														class="J_SelectCompany" value="6" name="company">
+														<img
+														src="//img.alicdn.com/tps/i4/T1qpX0FPFcXXc_d6ve-160-80.jpg">
+														顺丰速运</td>
+
+												</tr>
+											</tbody>
+
+										</table>
+
+									</div>
+								</div>
+							</fieldset>
+
+
+							<h1>完成预约</h1>
+							<fieldset>
+								<div class="remarks">
+									<table>
+										<tr>
+											<td>快递公司:</td>
+											<td><span id="cp"></span></td>
+										</tr>
+										<tr>
+											<td>货物名称：</td>
+											<td><input type="text" name="goodsname" value=""
+												class="form-control required" /></td>
+										</tr>
+										<tr>
+											<td>货值:</td>
+											<td><input type="text" name="goodsvalue" value=""
+												class="form-control required" />
+												&nbsp;&nbsp;元&nbsp;&nbsp;填写物品价值，便于您投诉维权。</td>
+										</tr>
+										<tr>
+											<td>备注:</td>
+											<td><input type="text" name="remark" value=""
+												class="remarksText form-control" /></td>
+										</tr>
+									</table>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="../js/content.min.js?v=1.0.0"></script>
+	<script src="../js/plugins/staps/jquery.steps.min.js"></script>
+	<script src="../js/plugins/validate/jquery.validate.min.js"></script>
+	<script src="../js/plugins/validate/messages_zh.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#wizard").steps();
+							$("#form")
+									.steps(
+											{
+												bodyTag : "fieldset",
+												onStepChanging : function(
+														event, currentIndex,
+														newIndex) {
+													if (currentIndex > newIndex) {
+														return true
+													}
+													if (newIndex === 3
+															&& Number($("#age")
+																	.val()) < 18) {
+														return false
+													}
+													var form = $(this);
+													if (currentIndex < newIndex) {
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") label.error",
+																form).remove();
+														$(
+																".body:eq("
+																		+ newIndex
+																		+ ") .error",
+																form)
+																.removeClass(
+																		"error")
+													}
+													form.validate().settings.ignore = ":disabled,:hidden";
+													return form.valid()
+												},
+												onStepChanged : function(event,
+														currentIndex,
+														priorIndex) {
+													if (currentIndex == 2) {
+														//获取选中的快递公司
+														var value = $(
+																'input:radio[name="company"]:checked')
+																.val();
+														
+														if (value == null)
+															$("#cp").html(
+																	"没有设置快递公司");
+														else {
+															if (value=="1") {
+																$("#cp").html(
+																		"中国邮政");
+															} else if (value=="2") {
+																$("#cp").html(
+																		"EMS");
+															} else if (value=="3") {
+																$("#cp").html(
+																		"圆通速递");
+															} else if (value=="4") {
+																$("#cp").html(
+																		"韵达快递");
+															} else if (value=="5") {
+																$("#cp").html(
+																		"中通快递");
+															} else {
+																$("#cp").html(
+																		"顺丰速运");
+															}
+
+														}
+													}
+
+													if (currentIndex === 2
+															&& Number($("#age")
+																	.val()) >= 18) {
+														$(this).steps("next")
+
+													}
+													if (currentIndex === 2
+															&& priorIndex === 3) {
+														$(this).steps(
+																"previous")
+													}
+
+												},
+												onFinishing : function(event,
+														currentIndex) {
+													var form = $(this);
+													form.validate().settings.ignore = ":disabled";
+													return form.valid()
+												},
+												onFinished : function(event,
+														currentIndex) {
+													var form = $(this);
+													form.submit()
+												}
+											}).validate(
+											{
+												errorPlacement : function(
+														error, element) {
+													element.before(error)
+												},
+												rules : {
+													confirm : {
+														equalTo : "#password"
+													}
+												}
+											})
+
+							//初始化城市联动select
+							province();
+							$('#Province').bind("change", city);
+							$('#City').bind("change", area);
+
+							/*省(jsonp)*/
+							function province() {
+								$
+										.ajax({
+											dataType : "jsonp",
+											type : "get",
+											url : "http://localhost:8083/logistics/location",
+											data : {
+												"type" : "province"
+											},
+											jsonp : 'callback',
+											jsonpCallback : 'mycallback',
+											success : function(data) {
+												var json = eval(data.data);
+												for (var i = 0; i < json.length; i++) {
+													$("#Province")
+															.append(
+																	"<option value=" + json[i].provinceid + ">"
+																			+ json[i].province
+																			+ "</option>");
+												}
+
+												city();
+											}
+										})
+							}
+							;
+							/*城市(jsonp)*/
+							function city() {
+								$("#City").html("");
+								//设置隐藏域的内容，方便提交
+								$("#s_prov_value").attr("value",
+										$("#Province option:selected").val());
+								$
+										.ajax({
+
+											dataType : "jsonp",
+											type : "get",
+											url : "http://localhost:8083/logistics/location",
+											data : {
+												"type" : "city",
+												"id" : $(
+														"#Province option:selected")
+														.val()
+											},
+											jsonp : 'callback',
+											jsonpCallback : 'mycallback',
+											success : function(data) {
+												var json = eval(data.data);
+												for (var i = 0; i < json.length; i++) {
+													$("#City")
+															.append(
+																	"<option value=" + json[i].cityid + ">"
+																			+ json[i].city
+																			+ "</option>");
+												}
+												//设置隐藏域的内容，方便提交
+
+												area();
+											}
+										})
+							}
+							;
+							/*区域(jsonp)*/
+							function area() {
+								$("#Area").html("");
+								$("#s_city_value").attr("value",
+										$("#City option:selected").val());
+								$
+										.ajax({
+											dataType : "jsonp",
+											type : "get",
+											url : "http://localhost:8083/logistics/location",
+											data : {
+												"type" : "area",
+												"id" : $(
+														"#City option:selected")
+														.val()
+											},
+											jsonp : 'callback',
+											jsonpCallback : 'mycallback',
+											success : function(data) {
+												var json = eval(data.data);
+												for (var i = 0; i < json.length; i++) {
+													$("#Area")
+															.append(
+																	"<option value=" + json[i].areaid + ">"
+																			+ json[i].area
+																			+ "</option>");
+												}
+												$("#s_area_value")
+														.attr(
+																"value",
+																$(
+																		"#Area option:selected")
+																		.val());
+											}
+										})
+							}
+							;
+
+							//监听区选择列表，为隐藏域赋值
+							$("#Area").change(
+									function() {
+										//设置隐藏域的内容，方便提交
+										$("#s_area_value").attr(
+												"value",
+												$("#Area option:selected")
+														.val());
+									})
+							//为隐藏域orderid设置值
+							
+						});
+	</script>
+	<script type="text/javascript"
+		src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+</body>
+</html>

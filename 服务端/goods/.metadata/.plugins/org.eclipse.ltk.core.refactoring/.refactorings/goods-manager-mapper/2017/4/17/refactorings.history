@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;goods-manager-mapper&apos;&#x0D;&#x0A;- Original project: &apos;goods-manager-mapper&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.goods.manager.mapper.TbMessageMapper.java&#x0D;&#x0A;     TbMessageMapper.xml" description="Delete elements" element1="src/main/java/com/goods/manager/mapper/TbMessageMapper.xml" element2="/src\/main\/java&lt;com.goods.manager.mapper{TbMessageMapper.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1493042269384" subPackages="false" version="1.0"/>
+</session>

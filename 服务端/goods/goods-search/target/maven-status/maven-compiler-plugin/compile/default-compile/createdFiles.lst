@@ -1,0 +1,12 @@
+com\goods\search\controller\SearchController.class
+com\goods\search\pojo\SearchResult.class
+com\goods\search\message\listener\CustomListener.class
+com\goods\search\dao\SearchDao.class
+com\goods\search\controller\ItemController.class
+com\goods\search\service\ItemService.class
+com\goods\search\service\impl\SearchServiceImpl.class
+com\goods\search\dao\impl\SearchDaoImpl.class
+com\goods\search\service\SearchService.class
+com\goods\search\service\impl\ItemServiceImpl.class
+com\goods\search\pojo\Item.class
+com\goods\search\mapper\ItemMapper.class

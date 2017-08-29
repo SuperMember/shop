@@ -1,0 +1,8 @@
+com\goods\sso\dao\impl\JedisClientCluster.class
+com\goods\sso\dao\impl\JedisClientSingle.class
+com\goods\sso\service\impl\UserServiceImpl.class
+com\goods\sso\dao\JedisClient.class
+com\goods\sso\mapper\UserMapper.class
+com\goods\sso\service\UserService.class
+com\goods\sso\controller\UserController.class
+com\goods\sso\pojo\UserEntity.class

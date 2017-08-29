@@ -1,0 +1,14 @@
+com\goods\manager\controller\UserController.class
+com\goods\manager\message\listener\CustomListener.class
+com\goods\manager\controller\MessageController.class
+com\goods\manager\interceptor\LoginInterceptor.class
+com\goods\manager\controller\CommentController.class
+com\goods\manager\dao\impl\JedisClientCluster.class
+com\goods\manager\controller\AppController.class
+com\goods\manager\controller\LogisticsController.class
+com\goods\manager\controller\CatController.class
+com\goods\manager\controller\GoodsController.class
+com\goods\manager\controller\PictureController.class
+com\goods\manager\controller\OrderController.class
+com\goods\manager\dao\impl\JedisClientSingle.class
+com\goods\manager\controller\IndexController.class

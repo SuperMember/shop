@@ -1,0 +1,48 @@
+package com.goods.sso.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.goods.manager.pojo.TbUser;
+import com.goods.sso.service.UserService;
+import com.goods.tools.common.util.TaotaoResult;
+
+@Controller
+public class UserController {
+	@Autowired
+	private UserService userService;
+
+	// µÇÂ¼
+	@RequestMapping(value = "/login/", method = RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult login(String username, String password, HttpServletRequest request,
+			HttpServletResponse response) {
+		TaotaoResult taotaoResult = userService.login(username, password,  request, response);
+		return taotaoResult;
+	}
+
+	// ×¢²áÊ±¼ì²â¸÷¸ö×Ö¶ÎÊÇ·ñ¿ÉÓÃ
+	@RequestMapping("/check/{type}")
+	@ResponseBody
+	public TaotaoResult checkdatas(@PathVariable("type") int type, String datas) {
+		TaotaoResult taotaoResult = userService.checkDatas(datas, type);
+		return taotaoResult;
+	}
+
+	// ×¢²á
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult register(TbUser tbUser) {
+		TaotaoResult taotaoResult = userService.register(tbUser);
+		return taotaoResult;
+	}
+
+
+}

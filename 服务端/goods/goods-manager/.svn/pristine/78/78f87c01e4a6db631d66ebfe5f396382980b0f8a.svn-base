@@ -1,0 +1,175 @@
+@charset "utf-8";
+/*public*/
+ul{margin:0;padding:0;list-style:none}
+.gray{color:#797979}
+.org{color:#f3b024}
+var{color:#b60016;margin:0 4px;font-weight:bold}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear: both;height:0}
+.clearfix{*zoom:1}
+
+/*buylist*/
+.buylist,.buy_ul{overflow:hidden}
+.buy_ul{background-color:#fafafa}
+.buy_ul li{float:left;width:730px;padding:15px 0 15px 10px;background:url("../img/tuangou/sep_bg.png") no-repeat center bottom}
+.buy_ul li img{float:left;width:300px;height:300px}
+.buy_ul li dl{float:right;width:412px;margin-top:10px}
+.buy_ul li dl dt{color:#242422;font-size:20px;font-weight:bold}
+.buy_ul li dl dd.buy_detail{padding:10px 0 20px 0;line-height:20px;text-indent:24px}
+.btn412x93{width:412px;height:93px;background:url("../img/tuangou/btn412x93.gif") no-repeat}
+.btn412x93 .btn_l{float:left;padding:28px 0 20px 10px;width:110px;color:#4e4e4e}
+.btn412x93 .btn_r{float:left}
+.btn412x93 .btn_r span{float:left;line-height:93px;padding:0 20px 0 50px;color:#fff;font-size:24px}
+.btn412x93 .btn_r a{float:left;width:99px;height:33px;margin-top:35px;padding-top:5px;text-align:center;color:#7c7c7c;text-decoration:none;font-size:14px;font-weight:bold}
+.btn412x93 .btn_r a.btn_yellow{background:url("../img/tuangou/btn_yellow99x33.gif") no-repeat}
+.btn412x93 .btn_r a.btn_gray{background:url("../img/tuangou/btn_gray99x33.gif") no-repeat}
+.btn412x93 .btn_r a.btn_yellow:hover{cursor:pointer;color:#FF5500}
+.buy_inf{float:right;width:355px;padding:30px 0;font-size:14px;font-weight:bold}
+.people_num{float:left;padding:0 30px 0 20px;background:url("../img/tuangou/check.gif") no-repeat 0 3px}
+.buy_time{float:left;padding-left:18px;background:url("../img/tuangou/clock.gif") no-repeat 0 4px}
+
+/*敬请期待*/
+.new_ul{width:198px;border:solid #dfdfdf;border-width:0 1px 1px 1px;overflow:hidden}
+.new_ul li{float:left;width:178px;padding:10px 10px 15px;border-bottom:1px dashed #dfdfdf}
+.new_ul li a img{display:block;width:68px;height:124px;margin:10px auto 0}
+.new_ul li.end{border:0}
+.new_ul dl{margin-top:4px}
+.new_ul dl dd{margin-top:2px}
+.new_ul dl dd.acc var{font-weight:normal;color:#f00;margin:0 2px}
+
+/*团购详情*/
+.tgdetail{padding:15px 0 40px 20px;overflow:hidden;background-color:#fafafa}
+.tgdetail h2{color:#565654;font-size:18px}
+.tgdetail .explain{line-height:24px;padding-right:15px;text-indent:24px;color:#565654;font-size:14px;font-weight:bold}
+.detail_l{float:left;width:300px;margin-top:20px}
+
+.bigImg{position:relative;background-color:#fff;width:300px;height:300px}
+.bigImg img{display:block;width:300px;height:300px;margin:0 auto}
+.smallImg{overflow:hidden;padding-top:20px}
+.smallImg .smallLeft,.smallImg .smallRight{display:block;float:left;width:15px;height:48px;background:url("../img/tuangou/btn_arrow.gif") no-repeat 0 center;cursor:pointer}
+.smallImg .smallRight{background:url("../img/tuangou/btn_arrow.gif") no-repeat -15px center}
+.smallImg .smallLeftbtn{background:url("../img/tuangou/btn_arrow2.gif") no-repeat 0 center}
+.smallImg .smallRightbtn{background:url("../img/tuangou/btn_arrow2.gif") no-repeat -15px center}
+.smallImg .smallMenu{float:left;width:240px;height:55px;margin:0 15px;overflow:hidden}
+.smallImg .smallMenu ul{margin-left:0px}
+.smallImg .smallMenu li{float:left;width:60px;text-align:center}
+.smallImg .smallMenu li img{width:34px;height:44px;padding:3px 8px;border:1px solid #dfdfdf}
+.smallImg .smallMenu li a.here img{border-color:#A10000}
+
+.share{width:215px;height:16px;margin-top:10px;background:url("../img/tuangou/sprite.jpg") no-repeat 50px 0}
+.share span{float:left;color:#616161}
+.share a{display:block;float:left;width:18px;height:16px;margin-right:7px}
+.share a.copylink{width:50px;color:#4b8cc4}
+
+.round{margin-top:10px;clear:both;background:url("../img/tuangou/round_bg.jpg") repeat-x}
+.round .roundTop{width:740px;height:5px;background:url("../img/tuangou/roundTop.jpg") no-repeat;overflow:hidden}
+.round .roundBot{width:740px;height:8px;background:url("../img/tuangou/roundBot.jpg") no-repeat}
+.round .middle{padding:10px 20px 15px;border-left:1px solid #dfdfdf;border-right:1px solid #dfdfdf}
+.round h2{padding-bottom:3px;color:#178add;font-size:14px}
+
+.mid_tab{position:relative;width:738px;height:35px;border:solid #dfdfdf;border-width:0 1px 1px 1px}
+.mid_tab ul{position:absolute;left:0;top:5px;padding-left:20px;overflow:hidden}
+.mid_tab li{float:left;width:121px;height:30px;line-height:30px;margin-right:10px;text-align:center;cursor:pointer;background:url("../img/tuangou/tab-no.jpg") no-repeat}
+.mid_tab li.here{height:31px;line-height:31px;background:#fff url("../img/tuangou/tab-here.jpg") no-repeat;color:#007ACB;font-size:14px;font-weight:bold}
+.list1,.list2,.list3{text-align:center;border:solid #dfdfdf;border-width:0 1px 0 1px}
+
+.detail_r{float:right;width:355px;padding-top:20px}
+.detail_r .btn412x93{width:355px}
+.detail_r .buy_inf{border-bottom:1px solid #dfdfdf}
+
+.pro_detail{width:350px;padding:10px 0;clear:both;overflow:hidden}
+.pro_detail li{float:left;width:100%;margin-top:10px}
+.pro_detail li label{float:left;width:60px;line-height:28px;text-align:right}
+.pro_detail li div{margin-left:60px}
+.pro_detail li div.pt4{line-height:20px}
+.pro_detail li .align-r{display:block;margin-right:5px;width:70px;text-align:right}
+.pro_detail .norm{float:left;display:block;padding:4px 8px;margin:0 6px 6px 0;white-space:nowrap;border:1px solid #91918f;cursor:pointer;background-color:#fff}
+.pro_detail .sel{padding:3px 7px;border:2px solid #fda510}
+.pro_detail .lack{cursor:not-allowed;border:1px solid #d1d1d3;color:#d3d3d3}
+.pro_detail .minus,.pro_detail .add{display:block;float:left;width:16px;height:30px;background:url("../img/tuangou/btn_as.gif") no-repeat 0 center}
+.pro_detail .add{background-position:-16px center}
+.pro_detail .gift_num{color:#f50;margin:0 4px;font-family:"宋体"}
+.pro_detail .buy_sum{float:left;width:30px;padding:4px;margin:3px 8px;text-align:center;border:1px solid #dfdfdf}
+
+.detail_r .btn_tuan,.detail_r .btn_disable{display:block;width:135px;height:39px;line-height:36px;margin:0 auto;text-align:center;color:#fff;font-size:24px;font-family:"微软雅黑";background:url("../img/tuangou/btn_detail135x39.gif") no-repeat;cursor:pointer}
+.detail_r .btn_disable{background-image:url("../img/tuangou/btn_disable.jpg")}
+
+/*单品页*/
+.pic_link{display:block}
+.pic_link img{display:block;margin: auto;padding:15px 0 30px}
+.img51x102{width:51px;height:102px}
+.bg_num{position:absolute;display:block;width:17px;height:17px;line-height:17px;text-align:center;color:#fff;background:url("../img/tuangou/bg_num.gif") no-repeat}
+.price_new{font-size:14px;font-weight:bold;color:#fe0000}
+.price_old{text-decoration:line-through}
+.value_group{font-size:20px;color:#fe0000}
+.font-s{font-size:10px}
+.l300{width:300px}
+.r420{width:420px}
+
+.browse-his{margin:0 auto 4px;overflow:hidden;color:#7a7a7a}
+.browse-his li{float:left;width:100%;margin-top:4px}
+.browse-his li .tag{cursor:pointer;height:25px;padding-left:10px;line-height:25px;background:url("../img/tuangou/bg_li.jpg") repeat-x}
+.browse-his li .tag .num{margin-right:5px}
+.browse-his li .detail{position:relative;margin:10px}
+.browse-his .hidden{display:none}
+
+.tgPro h2{font-size:18px}
+.ads{font-weight:bold;color:#6a6a6a}
+.bx_blue{border:1px solid #d9e5f3}
+.state{position:absolute;left:0;top:10px;width:90px;height:44px;line-height:40px;padding-left:20px;color:#fff;font-size:16px;background:url("../img/tuangou/btn107x44.gif") no-repeat}
+.trait{overflow:hidden}
+.trait li{float:left;width:36px;padding-right:15px}
+.trait li img{display:block;width:36px;height:36px}
+.trait li p{height:23px;line-height:23px;text-align:center}
+
+.intro{overflow:hidden}
+.intro li{float:left;width:100%;height:30px;line-height:30px}
+.intro li label{float:left}
+.intro li .payWay{float:left;overflow:hidden}
+.intro li .payWay li{width:80px;padding-left:20px;background:url("../img/tuangou/payWay.jpg") no-repeat}
+.intro li .payWay li.online-bank{background-position:0 0}
+.intro li .payWay li.alipay{background-position:0 -30px}
+.intro li .payWay li.mobile-pay{background-position:0 -60px}
+
+.gift{padding:10px;border:1px solid #9ac8f9;background-color:#f7faff}
+.buy-box{padding:10px 20px;border:1px solid #ffb643;background-color:#fff1da}
+.align_r{float:left;width:60px;line-height:34px;padding-right:6px;text-align:right}
+
+.model{float:left;width:312px;overflow:hidden}
+.model li{float:left;display:block;width:50px;line-height:20px;padding:3px 4px;margin-right:18px;margin-top:6px;text-align:center;border:1px solid #91918f;cursor:pointer;background-color:#fff}
+.model li.sel{padding:2px 3px;border:2px solid #fda510}
+.model li.lack{cursor:not-allowed;border:1px solid #d1d1d3;color:#d3d3d3}
+
+.quantity .minus,.quantity .add{display:block;float:left;width:16px;height:34px;background:url("../img/tuangou/btn_as.gif") no-repeat 0 center}
+.quantity .add{background-position:-16px center}
+.quantity .buy_sum{float:left;width:30px;padding:4px;margin:5px 8px;text-align:center;border:1px solid #dfdfdf}
+
+.btn135x39{cursor:pointer;float:left;width:139px;height:39px;margin-right:5px;line-height:39px;text-align:center;color:#fff;font-weight:bold;font-size:20px;border:0}
+.btn_orange{background:url("../img/tuangou/btn_detail135x39.gif") no-repeat}
+.btn_blue{background:url("../img/tuangou/btn_blue135x39.gif") no-repeat}
+.collect{float:left;height:15px;line-height:15px;margin-top:20px;padding-left:20px;color:#208ad6;background:url("../img/tuangou/addToF.gif") no-repeat}
+
+/*秒杀*/
+.seckill{width:412px;height:94px;background:url("../img/tuangou/bg_seckill.gif") repeat-x;font-family:"微软雅黑"}
+.seckill b{float:left;width:6px;height:94px;background:url("../img/tuangou/bg_wane.gif") no-repeat}
+.seckill .l{float:left;width:266px;overflow:hidden;margin:6px 0 0 16px}
+.seckill .l p{line-height:34px;color:#fff}
+.seckill .l p.alg_c{text-align:center;font-size:20px}
+.seckill .l p.pt20{padding-top:20px}
+.seckill .l p .f18{font-size:18px}
+.seckill .l p .f26{font-size:26px;color:#ff0;vertical-align:-2px}
+.seckill .btn95x38a,.seckill .btn95x38b{float:right;width:95px;height:38px;margin:25px 25px 0 0;line-height:34px;text-align:center;font-size:24px;background:url("../img/tuangou/btn95x38.gif")}
+.seckill .btn95x38a{color:#fff;background-position:0 0}
+.seckill .btn95x38b{color:#696969;background-position:0 -38px}
+.seckill .btn95x38a:hover,.seckill .btn95x38b:hover{text-decoration:none}
+.seckill .btn101x31{float:right;width:101px;height:31px;margin:27px 10px 0 0;line-height:30px;text-align:center;background:url("../img/tuangou/btn101x31.gif")}
+
+.limit_num{float:left;width:98px;font-weight:normal}
+.limit_num var{color:#B60016;font-weight:bold;margin:0 4px}
+.detail_r .seckill{width:355px}
+.detail_r .seckill .l{width:218px}
+.detail_r .captcha input{vertical-align:middle;width:120px;height:24px;line-height:24px;margin:2px 0}
+.detail_r .captcha img{width:51px;height:22px;vertical-align:middle;margin:0 4px}
+.detail_r a.login{color:#f50;font-weight:bold;font-size:14px;margin:0 4px;text-decoration:underline}
+
+.btn98x23{width:98px;height:23px;line-height:23px;text-align:center;background:url("../img/tuangou/btn98x23.gif")}
+a.btn98x23:hover{color:#000;text-decoration:none}

@@ -1,0 +1,6 @@
+com\goods\comments\service\CommentService.class
+com\goods\comments\service\impl\CommentServiceImpl.class
+com\goods\comments\pojo\CommentsResult.class
+com\goods\comments\controller\CommentsController.class
+com\goods\comments\service\impl\CommentServiceImpl$2.class
+com\goods\comments\service\impl\CommentServiceImpl$1.class

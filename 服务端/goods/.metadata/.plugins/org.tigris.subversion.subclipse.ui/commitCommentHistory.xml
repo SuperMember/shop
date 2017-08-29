@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>初始导入。</CommitComment>
+	<CommitComment>初始导入。后台管理</CommitComment>
+	<CommitComment>初始导入。websocket服务
+</CommitComment>
+	<CommitComment>初始导入。单点登录服务
+</CommitComment>
+	<CommitComment>初始导入。搜索服务</CommitComment>
+	<CommitComment>初始导入。订单服务</CommitComment>
+	<CommitComment>初始导入。物流服务</CommitComment>
+	<CommitComment>初始导入。评论服务</CommitComment>
+	<CommitComment>初始导入。工具</CommitComment>
+	<CommitComment>初始导入。父pom</CommitComment>
+</CommitComments>

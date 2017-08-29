@@ -1,0 +1,50 @@
+package com.goods.manager.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.goods.manager.mapper.TbAppMapper;
+import com.goods.manager.pojo.TbApp;
+import com.goods.manager.pojo.TbAppExample;
+import com.goods.manager.service.AppService;
+import com.goods.tools.common.util.TaotaoResult;
+
+@Service
+public class AppServiceImpl implements AppService {
+
+	@Autowired
+	private TbAppMapper tbAppMapper;
+
+	public TaotaoResult updateApp(TbApp tbApp) {
+		try {
+			TbApp lApp = tbAppMapper.selectByPrimaryKey(tbApp.getAppname());
+			if (lApp == null) {
+				// 插入
+				tbAppMapper.insert(tbApp);
+			} else {
+				tbAppMapper.updateByPrimaryKey(tbApp);
+			}
+			return TaotaoResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "更新失败，请稍候重试");
+	}
+
+	// 获取app版本信息
+	public TaotaoResult checkApp() {
+		try {
+			TbAppExample tbAppExample = new TbAppExample();
+			List<TbApp> list = tbAppMapper.selectByExample(tbAppExample);
+			if (list != null && list.size() != 0) {
+				return TaotaoResult.ok(list.get(0));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return TaotaoResult.build(400, "暂无版本信息");
+	}
+
+}

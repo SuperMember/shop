@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<context:property-placeholder location="classpath:resource/*.properties" />
+	<!--activemq配置 -->
+	<!--接收方前三个步骤必须 -->
+	<!--步骤一:配置工厂 -->
+	<bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!-- 设置连接,连接activemq服务器 -->
+		<property name="brokerURL" value="${ACTIVE_MQ_URL}"></property>
+		<!-- 用户名 -->
+		<property name="userName" value="${ACTIVE_MQ_USERNAME}"></property>
+		<!-- 密码 -->
+		<property name="password" value="${ACTIVE_MQ_PASSWORD}"></property>
+	</bean>
+	<!-- 步骤二:工厂连接池 -->
+	<bean id="pooledConnectionFactoryBean" class="org.apache.activemq.pool.PooledConnectionFactoryBean">
+		<property name="connectionFactory" ref="activeMQConnectionFactory" />
+		<!-- 最大 连接数 -->
+		<property name="maxConnections" value="2" />
+	</bean>
+	<!-- 步骤三：spring管理工厂连接池 -->
+	<bean class="org.springframework.jms.connection.SingleConnectionFactory"
+		id="singleConnectionFactory">
+		<!-- 注入工厂连接池 -->
+		<property name="targetConnectionFactory" ref="pooledConnectionFactoryBean" />
+	</bean>
+	<!-- 步骤四:JmsTemplate由Spring提供 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="singleConnectionFactory" />
+		默认目标
+		<property name="defaultDestinationName" value="itemId" />
+	</bean>
+
+
+</beans>
